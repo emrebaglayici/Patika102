@@ -1,6 +1,6 @@
 package Inheritance;
 
-public class Employee {
+public abstract class Employee {
     private String firstName;
     private String lastName;
     private String mPhone;
@@ -48,10 +48,20 @@ public class Employee {
         System.out.println(this.firstName+" "+this.lastName+" is in.");
     }
 
+    public void in(String entranceHour){
+        System.out.println(this.firstName+" "+this.lastName+" is in at "+entranceHour+" .");
+    }
+
     public void out(){
         System.out.println(this.firstName+" "+this.lastName+" is out.");
     }
     public void diningHall(){
         System.out.println(this.firstName+" "+this.lastName+" at dining hall.");
+    }
+
+    public static void loginUsers(Employee[] employees){
+        for(Employee employee:employees){
+            employee.in();
+        }
     }
 }

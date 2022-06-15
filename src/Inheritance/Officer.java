@@ -1,6 +1,6 @@
 package Inheritance;
 
-public class Officer extends Employee{
+public abstract class Officer extends Employee{
     private String department;
     private String shift;
     public Officer(String firstName, String lastName, String mPhone, String email,String department,String shift) {
@@ -24,7 +24,5 @@ public class Officer extends Employee{
     public void setShift(String shift) {
         this.shift = shift;
     }
-    public void work(){
-        System.out.println(this.getFirstName()+" "+this.getLastName()+" is working.");
-    }
+    public abstract void work();
 }

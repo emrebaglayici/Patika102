@@ -17,4 +17,9 @@ public class ComputerPersonnel extends Officer{
     public void setupNetwork(){
         System.out.println(this.getFirstName()+" "+this.getLastName()+" is set up the network.");
     }
+
+    @Override
+    public void work() {
+        System.out.println(this.getFirstName()+" "+this.getLastName()+" is working.");
+    }
 }

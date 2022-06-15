@@ -21,4 +21,9 @@ public class Instructor extends Academician{
     public void doExam(){
         System.out.println(this.getFirstName()+" "+this.getLastName()+" is doing exam.");
     }
+
+    @Override
+    public void teach(String classHours) {
+        System.out.println(this.getFirstName()+" "+this.getLastName()+ "instructor enter the class at "+classHours);
+    }
 }

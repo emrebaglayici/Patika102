@@ -1,6 +1,6 @@
 package Inheritance;
 
-public class Academician extends Employee{
+public abstract class Academician extends Employee{
     private String section;
     private String title;
     public Academician(String firstName, String lastName, String mPhone, String email, String section, String title) {
@@ -24,7 +24,10 @@ public class Academician extends Employee{
     public void setTitle(String title) {
         this.title = title;
     }
-    public void teach(){
-        System.out.println(this.getFirstName()+" "+this.getLastName()+" teaches.");
+    public abstract void teach(String classHours);
+
+    @Override
+    public void in(){
+        System.out.println(this.getFirstName()+" "+this.getLastName()+" entered A Gate .");
     }
 }

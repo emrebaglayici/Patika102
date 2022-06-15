@@ -18,4 +18,9 @@ public class Asistant extends Academician{
     public void doQuiz(){
         System.out.println(this.getFirstName()+" "+this.getLastName()+" is doing quiz.");
     }
+
+    @Override
+    public void teach(String classHours) {
+
+    }
 }

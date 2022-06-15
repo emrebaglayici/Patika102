@@ -19,4 +19,9 @@ public class SecurityPersonnel extends Officer{
     public void guardDuty(){
         System.out.println(this.getFirstName()+" "+this.getLastName()+" is on duty.");
     }
+
+    @Override
+    public void work() {
+        System.out.println(this.getFirstName()+" "+this.getLastName()+" is working.");
+    }
 }
