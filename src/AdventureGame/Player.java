@@ -8,6 +8,7 @@ public class Player {
     private Integer money;
     private String name;
     private String charName;
+    private int defHealth;
     private Scanner input = new Scanner(System.in);
     private Inventory inventory;
 
@@ -55,10 +56,18 @@ public class Player {
                 " money : " + this.money);*/
     }
 
+    public int getDefHealth() {
+        return defHealth;
+    }
+
+    public void setDefHealth(int defHealth) {
+        this.defHealth = defHealth;
+    }
 
     public void initPlayer(GameChar gameChar) {
         setDamage(gameChar.getDamage());
         setHealth(gameChar.getHealth());
+        setDefHealth(gameChar.getHealth());
         setMoney(gameChar.getMoney());
         setCharName(gameChar.getName());
     }
@@ -78,6 +87,9 @@ public class Player {
     }
 
     public void setHealth(Integer health) {
+        if(health<0){
+            health=0;
+        }
         this.health = health;
     }
 
