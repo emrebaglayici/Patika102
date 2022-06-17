@@ -2,7 +2,7 @@ package AdventureGame;
 
 public class SafeHouse extends NormalLocation{
     public SafeHouse(Player player) {
-        super(1,player,"Safe House");
+        super(player,"Safe House");
     }
 
     @Override

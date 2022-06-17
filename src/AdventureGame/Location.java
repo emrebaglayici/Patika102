@@ -7,10 +7,9 @@ public abstract class Location {
     private Player player;
     private String name;
     public static final Scanner input=new Scanner(System.in);
-    public Location(Integer id,Player player, String name) {
+    public Location(Player player, String name) {
         this.player = player;
         this.name = name;
-        this.id=id;
     }
     public abstract boolean onLocation();
     public Player getPlayer() {

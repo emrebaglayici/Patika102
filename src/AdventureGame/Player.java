@@ -13,7 +13,7 @@ public class Player {
 
 
     public Player(String name) {
-        this.inventory=new Inventory();
+        this.inventory = new Inventory();
         this.name = name;
     }
 
@@ -62,9 +62,11 @@ public class Player {
         setMoney(gameChar.getMoney());
         setCharName(gameChar.getName());
     }
-
+    public int getTotalDamage(){
+        return damage + this.getInventory().getWeapon().getDamage();
+    }
     public Integer getDamage() {
-        return damage+this.getInventory().getWeapon().getDamage();
+        return damage;
     }
 
     public void setDamage(Integer damage) {
@@ -104,7 +106,9 @@ public class Player {
     }
 
     public void printInfo() {
-        System.out.println("Your Weapon : "+this.getInventory().getWeapon().getName()+
-                "\t Damage : \t"+getDamage()+" Health : "+getHealth()+" Money "+getMoney());
+        System.out.println("Your Weapon : " + this.getInventory().getWeapon().getName() +
+                "\t Armor : " + this.getInventory().getArmor().getName() +
+                "\t Block : " + this.getInventory().getArmor().getBlock() +
+                "\t Damage : \t" + getDamage() + " Health : " + getTotalDamage() + " Money " + getMoney());
     }
 }

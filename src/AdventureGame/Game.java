@@ -17,17 +17,39 @@ public class Game {
         while (true){
             player.printInfo();
             System.out.println("Locations...");
-            Location[] locations={new SafeHouse(player),new ToolStore(player)};
-            for(Location loc:locations){
-                System.out.println("Id : "+loc.getId()+
-                        " "+loc.getName());
-            }
+            System.out.println("0- Exit");
+            System.out.println("1- Safe House");
+            System.out.println("2- Tool Store");
+            System.out.println("3- Cave");
+            System.out.println("4- Forest");
+            System.out.println("5- River");
             System.out.println("Please select a location");
             int selection=input.nextInt();
-            if (selection == 2) {
-                location = new ToolStore(player);
-            } else {
-                location = new SafeHouse(player);
+            switch (selection){
+                case 0:
+                    location=null;
+                    break;
+                case 1:
+                    location=new SafeHouse(player);
+                    break;
+                case 2:
+                    location=new ToolStore(player);
+                    break;
+                case 3:
+                    location=new Cave(player);
+                    break;
+                case 4:
+                    location=new Forest(player);
+                    break;
+                case 5:
+                    location=new River(player);
+                    break;
+                default:
+                    System.out.println("Please type valid location !!");
+            }
+            if(location==null){
+                System.out.println("game over see you");
+                break;
             }
             if(!location.onLocation()){
                 System.out.println("Game Over !");

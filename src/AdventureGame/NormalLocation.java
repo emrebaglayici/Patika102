@@ -1,8 +1,8 @@
 package AdventureGame;
 
 public abstract class NormalLocation extends Location {
-    public NormalLocation(Integer id,Player player, String name) {
-        super(id,player, name);
+    public NormalLocation(Player player, String name) {
+        super(player, name);
     }
 
     @Override
