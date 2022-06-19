@@ -1,5 +1,14 @@
 package AdventureGame;
 
+import AdventureGame.GameCharacter.Player;
+import AdventureGame.Location.BattleLocation.Cave;
+import AdventureGame.Location.BattleLocation.Forest;
+import AdventureGame.Location.BattleLocation.Mine;
+import AdventureGame.Location.BattleLocation.River;
+import AdventureGame.Location.Location;
+import AdventureGame.Location.NormalLocation.SafeHouse;
+import AdventureGame.Location.NormalLocation.ToolStore.ToolStore;
+
 import java.util.Scanner;
 
 public class Game {
@@ -16,14 +25,16 @@ public class Game {
         Location location=null;
         while (true){
             player.printInfo();
-            System.out.println("Locations...");
-            System.out.println("0- Exit");
-            System.out.println("1- Safe House");
-            System.out.println("2- Tool Store");
-            System.out.println("3- Cave");
-            System.out.println("4- Forest");
-            System.out.println("5- River");
-            System.out.println("Please select a location");
+            System.out.println("Locations... " +
+                    "\n0- Exit " +
+                    "\n1- Safe House" +
+                    "\n2- Tool Store " +
+                    "\n3- Cave " +
+                    "\n4- Forest " +
+                    "\n5- River " +
+                    "\n6- Mine"+
+                    "\n");
+            System.out.print("Please select a location = ");
             int selection=input.nextInt();
             switch (selection){
                 case 0:
@@ -43,6 +54,9 @@ public class Game {
                     break;
                 case 5:
                     location=new River(player);
+                    break;
+                case 6:
+                    location=new Mine(player);
                     break;
                 default:
                     System.out.println("Please type valid location !!");
