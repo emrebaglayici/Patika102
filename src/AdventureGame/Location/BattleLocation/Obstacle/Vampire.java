@@ -1,6 +1,5 @@
 package AdventureGame.Location.BattleLocation.Obstacle;
 
-import AdventureGame.Location.BattleLocation.Obstacle.Obstacle;
 
 public class Vampire extends Obstacle {
     public Vampire() {

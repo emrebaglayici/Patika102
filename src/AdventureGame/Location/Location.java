@@ -13,6 +13,8 @@ public abstract class Location {
         this.player = player;
         this.name = name;
     }
+
+
     public abstract boolean onLocation();
     public Player getPlayer() {
         return player;

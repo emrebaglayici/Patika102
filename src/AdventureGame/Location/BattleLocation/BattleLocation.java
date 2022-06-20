@@ -1,10 +1,5 @@
 package AdventureGame.Location.BattleLocation;
 
-import AdventureGame.Location.Award.Award;
-import AdventureGame.Location.Award.Food;
-import AdventureGame.Location.Award.Weapon;
-import AdventureGame.Location.BattleLocation.Obstacle.Snake;
-import AdventureGame.Location.BattleLocation.Obstacle.Zombie;
 import AdventureGame.Location.Location;
 import AdventureGame.Location.BattleLocation.Obstacle.Obstacle;
 import AdventureGame.GameCharacter.Player;
@@ -13,24 +8,37 @@ import java.util.Random;
 
 public abstract class BattleLocation extends Location {
     private Obstacle obstacle;
-    private Award award;
     private int maxObstacle;
     private int remainingObstacle;
+    private String award;
 
-    public BattleLocation(Player player, String name, Obstacle obstacle, Award award, int maxObstacle) {
+    public BattleLocation(Player player, String name, Obstacle obstacle, String award, int maxObstacle) {
         super(player, name);
         this.obstacle = obstacle;
         this.award = award;
         this.maxObstacle = maxObstacle;
     }
 
-    public BattleLocation(Player player, String name, Obstacle obstacle, Award award) {
-        super(player, name);
-        this.obstacle = obstacle;
-        this.award = award;
+//    public BattleLocation(Player player, String name, Obstacle obstacle, String award) {
+//        super(player, name);
+//        this.obstacle = obstacle;
+//        this.award = award;
+//    }
+
+//    public BattleLocation(Player player, String name, Obstacle obstacle, Award normalAward, int maxObstacle) {
+//        super(player, name);
+//        this.obstacle = obstacle;
+//        this.maxObstacle = maxObstacle;
+//        this.normalAward = normalAward;
+//    }
+
+    public String getNormalAward() {
+        return award;
     }
 
-
+    public void setNormalAward(String award) {
+        this.award = award;
+    }
 
     @Override
     public boolean onLocation() {
@@ -60,10 +68,11 @@ public abstract class BattleLocation extends Location {
         return remainingObstacle;
     }
 
-    public int randomStart(){
-        int input=(int)Math.round(Math.random());
+    public int randomStart() {
+        int input = (int) Math.round(Math.random());
         return input;
     }
+
     public void setRemainingObstacle(int remainingObstacle) {
         this.remainingObstacle = remainingObstacle;
     }
@@ -77,11 +86,11 @@ public abstract class BattleLocation extends Location {
                 System.out.print("<H>it or <R>un : ");
                 String selectionCombat = input.nextLine().toUpperCase();
                 if (selectionCombat.equals("H")) {
-                    if(randomStart()==0){
+                    if (randomStart() == 0) {
                         System.out.println("You hit.");
                         this.getObstacle().setHealth(this.obstacle.getHealth() - this.getPlayer().getTotalDamage());
                         afterHit();
-                    }else{
+                    } else {
                         if (this.getObstacle().getHealth() > 0) {
                             System.out.println();
                             System.out.println("Monster hits you");
@@ -98,20 +107,15 @@ public abstract class BattleLocation extends Location {
                     return false;
                 }
             }
-            if (this.getObstacle().getHealth() < this.getPlayer().getHealth()) {
-                System.out.println("You win and get "+this.getObstacle().getAward() + " coin :)");
-                this.getPlayer().setMoney(this.getPlayer().getMoney() + this.getObstacle().getAward());
-                System.out.println("Your current coin : " + this.getPlayer().getMoney());
-
-            } else {
-                return false;
-            }
         }
-        return false;
-    }
-
-    private boolean check() {
-        return getRemainingObstacle() == 0;
+        if (this.getObstacle().getHealth() < this.getPlayer().getHealth()) {
+            System.out.println("You win and get " + this.getObstacle().getAward() + " coin :)");
+            this.getPlayer().setMoney(this.getPlayer().getMoney() + this.getObstacle().getAward());
+            System.out.println("Your current coin : " + this.getPlayer().getMoney());
+        } else {
+            return false;
+        }
+        return true;
     }
 
     private void afterHit() {
@@ -139,8 +143,8 @@ public abstract class BattleLocation extends Location {
 
     private int randomObstacleNumber() {
         Random random = new Random();
-        if(this.getObstacle().getName().equals("Snake")){
-            return random.nextInt((5-1)+1)+1;
+        if (this.getObstacle().getName().equals("Snake")) {
+            return random.nextInt((5 - 1) + 1) + 1;
         }
         return random.nextInt((this.getMaxObstacle() - 1) + 1) + 1;
     }
@@ -161,11 +165,11 @@ public abstract class BattleLocation extends Location {
         this.obstacle = obstacle;
     }
 
-    public Award getAward() {
+    public String getAward() {
         return award;
     }
 
-    public void setAward(Award award) {
+    public void setAward(String award) {
         this.award = award;
     }
 }

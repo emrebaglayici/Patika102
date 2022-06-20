@@ -12,10 +12,14 @@ public class Player {
     private Scanner input = new Scanner(System.in);
     private Inventory inventory;
 
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
+    }
 
     public Player(String name) {
         this.inventory = new Inventory();
         this.name = name;
+        this.defHealth=getDefHealth();
     }
 
     public Inventory getInventory() {

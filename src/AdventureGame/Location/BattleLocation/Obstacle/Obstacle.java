@@ -22,6 +22,11 @@ public class Obstacle {
         this.award=award;
     }
 
+
+    public Obstacle(int award) {
+        this.award = award;
+    }
+
     public int getAward() {
         return award;
     }
