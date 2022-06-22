@@ -6,9 +6,7 @@ import AdventureGame.Location.NormalLocation.ToolStore.Weapon;
 public class Inventory {
     private Weapon weapon;
     private Armor armor;
-    private int food;
-    private int fireWood;
-    private int water;
+    private String loot;
     public Inventory() {
         this.weapon = new Weapon("Punch",-1,0,0);
         this.armor=new Armor(-1,"No-Armor",0,0);
@@ -31,27 +29,11 @@ public class Inventory {
         this.armor = armor;
     }
 
-    public int getFood() {
-        return food;
+    public String getLoot() {
+        return loot;
     }
 
-    public void setFood(int food) {
-        this.food = food;
-    }
-
-    public int getFireWood() {
-        return fireWood;
-    }
-
-    public void setFireWood(int fireWood) {
-        this.fireWood = fireWood;
-    }
-
-    public int getWater() {
-        return water;
-    }
-
-    public void setWater(int water) {
-        this.water = water;
+    public void setLoot(String loot) {
+        this.loot = loot;
     }
 }

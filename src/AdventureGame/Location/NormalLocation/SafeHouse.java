@@ -7,6 +7,7 @@ public class SafeHouse extends NormalLocation {
         super(player,"Safe House");
     }
 
+
     @Override
     public boolean onLocation() {
         System.out.println("You are at safe house and recovered your health");

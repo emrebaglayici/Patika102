@@ -3,6 +3,8 @@ package AdventureGame.Location.BattleLocation;
 import AdventureGame.Location.Location;
 import AdventureGame.Location.BattleLocation.Obstacle.Obstacle;
 import AdventureGame.GameCharacter.Player;
+import AdventureGame.Location.NormalLocation.ToolStore.Armor;
+import AdventureGame.Location.NormalLocation.ToolStore.Weapon;
 
 import java.util.Random;
 
@@ -11,6 +13,10 @@ public abstract class BattleLocation extends Location {
     private int maxObstacle;
     private int remainingObstacle;
     private String award;
+    private Location location;
+    private boolean enterKey=true;
+    private BattleLocation battleLocation;
+
 
     public BattleLocation(Player player, String name, Obstacle obstacle, String award, int maxObstacle) {
         super(player, name);
@@ -19,25 +25,28 @@ public abstract class BattleLocation extends Location {
         this.maxObstacle = maxObstacle;
     }
 
-//    public BattleLocation(Player player, String name, Obstacle obstacle, String award) {
-//        super(player, name);
-//        this.obstacle = obstacle;
-//        this.award = award;
-//    }
-
-//    public BattleLocation(Player player, String name, Obstacle obstacle, Award normalAward, int maxObstacle) {
-//        super(player, name);
-//        this.obstacle = obstacle;
-//        this.maxObstacle = maxObstacle;
-//        this.normalAward = normalAward;
-//    }
-
-    public String getNormalAward() {
-        return award;
+    public Location getLocation() {
+        return location;
     }
 
-    public void setNormalAward(String award) {
-        this.award = award;
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public BattleLocation getBattleLocation() {
+        return battleLocation;
+    }
+
+    public void setBattleLocation(BattleLocation battleLocation) {
+        this.battleLocation = battleLocation;
+    }
+
+    public boolean isEnterKey() {
+        return enterKey;
+    }
+
+    public void setEnterKey(boolean enterKey) {
+        this.enterKey = enterKey;
     }
 
     @Override
@@ -78,7 +87,8 @@ public abstract class BattleLocation extends Location {
     }
 
     public boolean combat(int obsNumber) {
-        for (int i = 1; i < obsNumber; i++) {
+
+        for (int i = 1; i <= obsNumber; i++) {
             this.getObstacle().setHealth(this.getObstacle().getDefHealth());
             playerStats();
             obstacleStats(i);
@@ -109,13 +119,98 @@ public abstract class BattleLocation extends Location {
             }
         }
         if (this.getObstacle().getHealth() < this.getPlayer().getHealth()) {
-            System.out.println("You win and get " + this.getObstacle().getAward() + " coin :)");
-            this.getPlayer().setMoney(this.getPlayer().getMoney() + this.getObstacle().getAward());
-            System.out.println("Your current coin : " + this.getPlayer().getMoney());
+            if (this.getName().equals("Mine")) {
+                int random = (int) (Math.random() * 100);
+                if (random <= 15) {
+                    int random2 = (int) (Math.random() * 100);
+                    randomWeaponChance(random2);
+                }
+
+                if (random > 15 && random <= 30) {
+                    int random2 = (int) (Math.random() * 100);
+                    randomArmorChance(random2);
+                }
+                if (random > 30 && random <= 55) {
+                    int random2 = (int) (Math.random() * 100);
+                    randomCoinChance(random2);
+                }
+                if (random > 55) {
+                    System.out.println("You win but get nothing , sory for that...");
+                }
+
+
+            } if (this.getName().equals("Cave")) {
+                this.getPlayer().getInventory().setLoot("Food");
+                System.out.println("You win and get " + this.getPlayer().getInventory().getLoot());
+                battleLocation=new Forest(getPlayer());
+                this.setEnterKey(false);
+
+
+            }
+            if (this.getName().equals("Forest")) {
+                this.getPlayer().getInventory().setLoot("Firewood");
+                System.out.println("You win and get " + this.getPlayer().getInventory().getLoot());
+
+            }
+            if (this.getName().equals("River")) {
+                this.getPlayer().getInventory().setLoot("Water");
+                System.out.println("You win and get " + this.getPlayer().getInventory().getLoot());
+
+            }
         } else {
             return false;
         }
         return true;
+    }
+
+
+    private void randomCoinChance(int random2) {
+        if (random2 <= 20) {
+            System.out.println("You win and get 10 coin :)");
+            this.getPlayer().setMoney(this.getPlayer().getMoney() + 10);
+            System.out.println("Your current coin : " + this.getPlayer().getMoney());
+        }
+        if (random2 > 20 && random2 <= 30) {
+            System.out.println("You win and get 5 coin :)");
+            this.getPlayer().setMoney(this.getPlayer().getMoney() + 5);
+            System.out.println("Your current coin : " + this.getPlayer().getMoney());
+        }
+        if (random2 > 50) {
+            System.out.println("You win and get 1 coin :)");
+            this.getPlayer().setMoney(this.getPlayer().getMoney() + 1);
+            System.out.println("Your current coin : " + this.getPlayer().getMoney());
+        }
+    }
+
+    private void randomArmorChance(int random2) {
+        if (random2 <= 20) {
+            this.getPlayer().getInventory().setArmor(Armor.getArmorById(3));
+            System.out.println("You win and get " + this.getPlayer().getInventory().getArmor().getName());
+        }
+        if (random2 > 20 && random2 <= 30) {
+            this.getPlayer().getInventory().setArmor(Armor.getArmorById(2));
+            System.out.println("You win and get " + this.getPlayer().getInventory().getArmor().getName());
+        }
+        if (random2 > 50) {
+            this.getPlayer().getInventory().setArmor(Armor.getArmorById(1));
+            System.out.println("You win and get " + this.getPlayer().getInventory().getArmor().getName());
+        }
+    }
+
+    private void randomWeaponChance(int random2) {
+        if (random2 <= 20) {
+            this.getPlayer().getInventory().setWeapon(Weapon.getWeaponById(3));
+            System.out.println("You win and get " + this.getPlayer().getInventory().getWeapon().getName());
+        }
+        if (random2 > 20 && random2 <= 30) {
+            this.getPlayer().getInventory().setWeapon(Weapon.getWeaponById(2));
+            System.out.println("You win and get " + this.getPlayer().getInventory().getWeapon().getName());
+        }
+        if (random2 > 50) {
+            this.getPlayer().getInventory().setWeapon(Weapon.getWeaponById(1));
+            System.out.println("You win and get " + this.getPlayer().getInventory().getWeapon().getName());
+        }
+
     }
 
     private void afterHit() {
@@ -123,6 +218,7 @@ public abstract class BattleLocation extends Location {
         System.out.println(this.getObstacle().getName() + " health is : " + this.getObstacle().getHealth());
         System.out.println();
     }
+
 
     private void obstacleStats(int i) {
         System.out.println(i + " . " + this.getObstacle().getName() + " stats.");

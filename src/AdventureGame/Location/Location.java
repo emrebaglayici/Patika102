@@ -8,12 +8,20 @@ public abstract class Location {
     private Integer id;
     private Player player;
     private String name;
+    private boolean canEnter=true;
     public static final Scanner input=new Scanner(System.in);
     public Location(Player player, String name) {
         this.player = player;
         this.name = name;
     }
 
+    public boolean getCanEnter() {
+        return canEnter;
+    }
+
+    public void setCanEnter(boolean canEnter) {
+        this.canEnter = canEnter;
+    }
 
     public abstract boolean onLocation();
     public Player getPlayer() {
