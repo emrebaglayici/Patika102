@@ -1,6 +1,6 @@
 package Generics;
 
-public class Nullable <T>{
+public class Nullable <T extends Number>{
     private final T value;
 
     public Nullable(T value) {
