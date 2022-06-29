@@ -1,6 +1,6 @@
 package Collactions.HwBackUp;
 
-import java.util.List;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -13,5 +13,6 @@ public class Main {
         fixture.teams.add("Trabzonspor");
         List<List<Match>> matches=fixture.roundStart();
         fixture.print(matches);
+
     }
 }
