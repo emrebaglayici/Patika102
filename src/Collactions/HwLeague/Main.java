@@ -1,16 +1,22 @@
 package Collactions.HwLeague;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
-        Teams teams=new Teams();
-        teams.teams.add("Galatasaray");
-        teams.teams.add("Bursaspor");
-        teams.teams.add("Fenerbahçe");
-        teams.teams.add("Beşiktaş");
-        teams.teams.add("Başakşehir");
-        teams.teams.add("Trabzonspor");
-        teams.printTeams();
-        teams.roundStart();
+
+        ArrayList<String> teamList=new ArrayList<>();
+        teamList.add("Galatasaray");
+        teamList.add("Bursaspor");
+        teamList.add("Fenerbahçe");
+        teamList.add("Beşiktaş");
+        teamList.add("Başakşehir");
+        teamList.add("Trabzonspor");
+
+        GenerateFixture generateFixture=new GenerateFixture();
+        List<List<Match>> matches=generateFixture.getFixtures(teamList);
+        generateFixture.printAll(matches);
 
     }
 }
