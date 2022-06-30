@@ -23,6 +23,9 @@ public class Main {
                 System.out.println("0- Exit");
                 System.out.println("1- List All Notebooks");
                 System.out.println("2- Add a notebook");
+                System.out.println("3- Remove a notebook with id");
+                System.out.println("4- Filter product id");
+                System.out.println("5- Filter product brand");
                 selection= scanner.nextInt();
                 if(selection==0)
                     break;
@@ -30,6 +33,7 @@ public class Main {
                     notebook.printAllNotebooks();
                     break;
                 } else if (selection==2) {
+//                    notebook.notebooks();
                     System.out.print("Id : ");
                     int id=scanner.nextInt();
                     System.out.print("Product Name : ");
@@ -44,11 +48,28 @@ public class Main {
                     float inch= scanner.nextFloat();
                     System.out.print("Product Ram : ");
                     int ram=scanner.nextInt();
-                    notebook.notebooks().add(new Notebook(
-                            id,name,price,new Brands(brand),storage,
-                            inch,ram
-                    ));
+                    notebook.addNotebook(new Notebook(id,name,price,new Brands(brand),storage,
+                            inch,ram));
+
                     notebook.printAllNotebooks();
+                    break;
+                } else if (selection==3) {
+                    notebook.printAllNotebooks();
+                    System.out.println("Enter an id which you want to remove");
+                    selection= scanner.nextInt();
+                    notebook.removeNotebook(selection);
+                    notebook.printAllNotebooks();
+                    break;
+                } else if (selection==4) {
+                    System.out.print("Enter the Id : ");
+                    selection=scanner.nextInt();
+                    notebook.filterById(selection);
+                    break;
+                } else if (selection==5) {
+                    System.out.print("Enter a brand : ");
+                    String selectionBrand=scanner.next();
+                    notebook.filterByBrand(selectionBrand);
+                    break;
                 }
 
 
