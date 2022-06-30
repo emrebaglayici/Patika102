@@ -74,6 +74,62 @@ public class Main {
 
 
             case 2:
+                System.out.println("0- Exit");
+                System.out.println("1- List All Mobile Phones");
+                System.out.println("2- Add a Mobile Phone");
+                System.out.println("3- Remove a Mobile Phone with id");
+                System.out.println("4- Filter product id");
+                System.out.println("5- Filter product brand");
+                selection= scanner.nextInt();
+                if(selection==0)
+                    break;
+                else if (selection==1) {
+                    mobilePhone.printAllMobilePhones();
+                    break;
+                } else if (selection==2) {
+                    System.out.print("Id : ");
+                    int id=scanner.nextInt();
+                    System.out.print("Product Name : ");
+                    String name=scanner.next();
+                    System.out.print("Product Price : ");
+                    double price= scanner.nextDouble();
+                    System.out.print("Product Brand : ");
+                    String brand=scanner.next();
+                    System.out.print("Product Storage : ");
+                    int storage=scanner.nextInt();
+                    System.out.print("Product Inch : ");
+                    float inch= scanner.nextFloat();
+                    System.out.println("Product Camera");
+                    int camera=scanner.nextInt();
+                    System.out.println("Product Battery");
+                    int battery= scanner.nextInt();
+                    System.out.println("Product Color");
+                    String color=scanner.next();
+                    System.out.print("Product Ram : ");
+                    int ram=scanner.nextInt();
+                    mobilePhone.addMobilePhone(new MobilePhone(id,name,price,new Brands(brand),storage,
+                            inch,camera,battery,color,ram));
+
+                    mobilePhone.printAllMobilePhones();
+                    break;
+                } else if (selection==3) {
+                    mobilePhone.printAllMobilePhones();
+                    System.out.println("Enter an id which you want to remove");
+                    selection= scanner.nextInt();
+                    mobilePhone.removeMobilePhone(selection);
+                    mobilePhone.printAllMobilePhones();
+                    break;
+                } else if (selection==4) {
+                    System.out.print("Enter the Id : ");
+                    selection=scanner.nextInt();
+                    mobilePhone.filterById(selection);
+                    break;
+                } else if (selection==5) {
+                    System.out.print("Enter a brand : ");
+                    String selectionBrand=scanner.next();
+                    mobilePhone.filterByBrand(selectionBrand);
+                    break;
+                }
                 mobilePhone.printAllMobilePhones();
                 break;
             case 3:
