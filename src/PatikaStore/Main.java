@@ -33,7 +33,6 @@ public class Main {
                     notebook.printAllNotebooks();
                     break;
                 } else if (selection==2) {
-//                    notebook.notebooks();
                     System.out.print("Id : ");
                     int id=scanner.nextInt();
                     System.out.print("Product Name : ");

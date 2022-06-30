@@ -1,7 +1,6 @@
 package PatikaStore;
 
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.TreeSet;
 
 public class MobilePhone extends Product {
@@ -28,19 +27,19 @@ public class MobilePhone extends Product {
         mobilePhones.add(new MobilePhone(
                 1, "GALAXY A51",
                 3199.0, new Brands("Samsung"), 128,
-                6.5f, 32, 4000, "Siyah", 6
+                6.5f, 32, 4000, "Black", 6
         ));
 
         mobilePhones.add(new MobilePhone(
                 2, "iPhone 11",
                 7379.0, new Brands("Apple"), 64,
-                6.1f, 5, 3046, "Mavi", 6
+                6.1f, 5, 3046, "Blue", 6
         ));
 
         mobilePhones.add(new MobilePhone(
                 3, "Redmi Note 10 Pro",
                 4012.0, new Brands("Xiaomi"), 128,
-                6.5f, 35, 4000, "Beyaz", 12
+                6.5f, 35, 4000, "White", 12
         ));
         return mobilePhones;
     }

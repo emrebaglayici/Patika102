@@ -1,6 +1,6 @@
 package PatikaStore;
 
-public class Product {
+public class Product{
     private int id;
     private String name;
     private double price;
@@ -19,9 +19,7 @@ public class Product {
         this.ram = ram;
     }
 
-    public Product() {
-
-    }
+    public Product() {}
 
     public int getId() {
         return id;
@@ -43,39 +41,20 @@ public class Product {
         return price;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
     public Brands getBrand() {
         return brand;
-    }
-
-    public void setBrand(Brands brand) {
-        this.brand = brand;
     }
 
     public int getStorage() {
         return storage;
     }
 
-    public void setStorage(int storage) {
-        this.storage = storage;
-    }
-
     public float getInch() {
         return inch;
-    }
-
-    public void setInch(float inch) {
-        this.inch = inch;
     }
 
     public int getRam() {
         return ram;
     }
 
-    public void setRam(int ram) {
-        this.ram = ram;
-    }
 }

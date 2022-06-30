@@ -62,16 +62,16 @@ public class Notebook extends Product {
     }
 
     public void printBy(Notebook notebook) {
-        System.out.println("Notbook Listesi");
+        System.out.println("Filtered Notebook List");
         System.out.println("-----------------");
         String format = "|%1$-2s|%2$-20s|%3$-20s|%4$-10s|%5$-10s|%6$-20s|%7$-5s|\n";
         System.out.format(format, "ID",
-                "Ürün Adı",
-                "Fiyat",
-                "Marka",
-                "Depolama",
-                "Ekran",
-                "RAM");
+                "Product Name",
+                "Price",
+                "Brand",
+                "Storage",
+                "Inch",
+                "Ram");
         System.out.println();
         System.out.format(format, notebook.getId(),
                 notebook.getName(),
@@ -84,16 +84,16 @@ public class Notebook extends Product {
     }
 
     public void printAllNotebooks() {
-        System.out.println("Notbook Listesi");
+        System.out.println("Notebook List");
         System.out.println("-----------------");
         String format = "|%1$-2s|%2$-20s|%3$-20s|%4$-10s|%5$-10s|%6$-20s|%7$-5s|\n";
         System.out.format(format, "ID",
-                "Ürün Adı",
-                "Fiyat",
-                "Marka",
-                "Depolama",
-                "Ekran",
-                "RAM");
+                "Product Name",
+                "Price",
+                "Brand",
+                "Storage",
+                "Inch",
+                "Ram");
         System.out.println();
         for (Notebook notebook : notebooks) {
             System.out.format(format, notebook.getId(),

@@ -16,7 +16,7 @@ public class Brands {
     public Brands(String name){
         this.name=name;
     }
-    static TreeSet<Brands> brandsHashSet=new TreeSet<>(new Comparator<Brands>() {
+    static TreeSet<Brands> brands=new TreeSet<>(new Comparator<Brands>() {
         @Override
         public int compare(Brands o1, Brands o2) {
             return o1.getName().compareTo(o2.getName());
@@ -24,9 +24,9 @@ public class Brands {
     });
 
     public void printAllBrand(){
-        System.out.println("Markalarımız");
+        System.out.println("Our Brands");
         System.out.println("---------------");
-        for (Brands str:brandsHashSet){
+        for (Brands str:brands){
             System.out.println("- "+str.name);
         }
     }
@@ -50,20 +50,15 @@ public class Brands {
 
     static {
 
-        brandsHashSet.add(new Brands(1,"Samsung"));
-        brandsHashSet.add(new Brands(2,"Lenovo"));
-        brandsHashSet.add(new Brands(3,"Apple"));
-        brandsHashSet.add(new Brands(4,"Huawei"));
-        brandsHashSet.add(new Brands(5,"Casper"));
-        brandsHashSet.add(new Brands(6,"Asus"));
-        brandsHashSet.add(new Brands(7,"HP"));
-        brandsHashSet.add(new Brands(8,"Xiaomi"));
-        brandsHashSet.add(new Brands(9,"Monster"));
+        brands.add(new Brands(1,"Samsung"));
+        brands.add(new Brands(2,"Lenovo"));
+        brands.add(new Brands(3,"Apple"));
+        brands.add(new Brands(4,"Huawei"));
+        brands.add(new Brands(5,"Casper"));
+        brands.add(new Brands(6,"Asus"));
+        brands.add(new Brands(7,"HP"));
+        brands.add(new Brands(8,"Xiaomi"));
+        brands.add(new Brands(9,"Monster"));
     }
-
-
-
-
-
 
 }
