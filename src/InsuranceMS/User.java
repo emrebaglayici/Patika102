@@ -13,11 +13,11 @@ public class User {
     private String job;
     private Integer age;
     private ArrayList<IAdress> adressList;
-    private Date lastLoginDate;
+    private String lastLoginDate;
 
     public User(String firstName, String lastName, String email,
                 String password, String job, Integer age,
-                ArrayList<IAdress> adressList, Date lastLoginDate) {
+                String lastLoginDate) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -88,11 +88,11 @@ public class User {
         this.adressList = adressList;
     }
 
-    public Date getLastLoginDate() {
+    public String getLastLoginDate() {
         return lastLoginDate;
     }
 
-    public void setLastLoginDate(Date lastLoginDate) {
+    public void setLastLoginDate(String lastLoginDate) {
         this.lastLoginDate = lastLoginDate;
     }
 }

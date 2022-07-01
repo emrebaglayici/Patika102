@@ -10,6 +10,10 @@ public class AccountManager {
         this.accountList = new TreeSet<>();
     }
 
+    public AccountManager() {
+        this.accountList = new TreeSet<>();
+    }
+
     public TreeSet<Account> getAccountList() {
         return accountList;
     }
@@ -18,11 +22,13 @@ public class AccountManager {
         this.accountList = accounts;
     }
 
-    public Account login(String email,String password)  {
-        for (Account a:accountList){
+    public Account login(String email, String password) {
+        for (Account a : accountList) {
             try {
-                if(a.login(email,password))
+                if (a.login(email, password)) {
+                    a.showInfo();
                     return a;
+                }
             } catch (InvalidAuthenticationException e) {
                 throw new RuntimeException(e);
             }

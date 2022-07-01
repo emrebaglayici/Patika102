@@ -49,7 +49,7 @@ public abstract class Account implements Comparable {
     }
 
     public boolean login(String email, String password) throws InvalidAuthenticationException {
-        if (email.equals(user.getEmail())) {
+        if (email.equals(user.getEmail())&& password.equals(user.getPassword())) {
             setAuthenticationStatus(AuthenticationStatus.success);
             System.out.println("User logged in");
             return true;

@@ -15,4 +15,5 @@ public class Individual extends Account {
     public int compareTo(Object o) {
         return 0;
     }
+
 }
