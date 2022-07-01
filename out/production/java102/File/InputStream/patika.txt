@@ -1,0 +1,2 @@
+Patika.dev ile java 102
+Bu bir fileInputStream örneğidir.
