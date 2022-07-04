@@ -6,10 +6,10 @@ import java.util.Map;
 public class Main {
     public static void main(String[] args) {
         Map<String,String> map=new HashMap<>();
-        map.put("TR","Türkiye");
-        map.put("USA","Emerika");
-        map.put("FR","Fransa");
-        map.put("EN","İngiltere");
+        map.put("TR","Turkey");
+        map.put("USA","United States");
+        map.put("FR","France");
+        map.put("EN","England");
 
         for (String key:map.keySet()){
             System.out.println(key);

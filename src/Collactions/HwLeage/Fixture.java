@@ -1,4 +1,4 @@
-package Collactions.HwBackUp;
+package Collactions.HwLeage;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -46,7 +46,7 @@ public class Fixture {
 
     public List<List<Match>> roundStart() {
         if (!isEven()) {
-            teams.add("Bay");
+            teams.add("Ghost Team");
         }
         int roundNumber = teams.size() - 1;
         int mathPerRound = teams.size() / 2;

@@ -6,16 +6,16 @@ import java.util.LinkedHashSet;
 
 public class Main {
     public static void main(String[] args) {
-        //boyut vermemiz gerek yok , kendi genişleyecek
+        //No need to set length , it will automatically be large
 //        HashSet<Integer> hashSet=new HashSet<>();
 //        hashSet.add(10);
 //        hashSet.add(20);
 //        hashSet.add(10);
 //        hashSet.add(30);
 //        hashSet.add(null);
-////        for(Integer sayi:hashSet){
+////        for(Integer number:hashSet){
 ////            //tekrar eden verileri yazmaz
-////            System.out.println(sayi);
+////            System.out.println(number);
 ////        }
 //        Iterator<Integer> iterator=hashSet.iterator();
 //        while (iterator.hasNext()){

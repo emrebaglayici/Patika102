@@ -135,7 +135,7 @@ public abstract class BattleLocation extends Location {
                     randomCoinChance(random2);
                 }
                 if (random > 55) {
-                    System.out.println("You win but get nothing , sory for that...");
+                    System.out.println("You win but get nothing , sorry for that...");
                 }
 
 

@@ -7,9 +7,9 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         List<String> list=new LinkedList<>();
-        list.add("Emre");
-        list.add("Elif");
-        list.add("Şenol");
+        list.add("John");
+        list.add("Doe");
+        list.add("Alex");
 
         Iterator<String> iterator= list.iterator();
         while (iterator.hasNext()){

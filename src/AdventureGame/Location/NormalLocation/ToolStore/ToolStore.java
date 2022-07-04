@@ -51,10 +51,10 @@ public class ToolStore extends NormalLocation {
                 if (selectedArmor.getPrice() > this.getPlayer().getMoney()) {
                     System.out.println("Not enough found");
                 } else {
-                    System.out.println(selectedArmor.getName() + " zırhını satın aldınız.");
+                    System.out.println("You bought "+selectedArmor.getName()+" armor.");
                     int balance = this.getPlayer().getMoney() - selectedArmor.getPrice();
                     this.getPlayer().setMoney(balance);
-                    System.out.println("Kalan paranız : " + this.getPlayer().getMoney());
+                    System.out.println("Remaining money : " + this.getPlayer().getMoney());
                     this.getPlayer().getInventory().setArmor(selectedArmor);
                 }
             }
@@ -90,10 +90,10 @@ public class ToolStore extends NormalLocation {
                 if (selectedWeapon.getPrice() > this.getPlayer().getMoney()) {
                     System.out.println("Not enough found");
                 } else {
-                    System.out.println(selectedWeapon.getName() + " silahı satın aldınız.");
+                    System.out.println("You bought "+selectedWeapon.getName() + " weapon.");
                     int balance = this.getPlayer().getMoney() - selectedWeapon.getPrice();
                     this.getPlayer().setMoney(balance);
-                    System.out.println("Kalan paranız : " + this.getPlayer().getMoney());
+                    System.out.println("Remaining money : " + this.getPlayer().getMoney());
                     this.getPlayer().getInventory().setWeapon(selectedWeapon);
                 }
             }

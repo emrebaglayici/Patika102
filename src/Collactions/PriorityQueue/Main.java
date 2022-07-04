@@ -12,11 +12,10 @@ public class Main {
             }
         }.reversed());
 
-        priorityQueue.add("Emre");
-        priorityQueue.add("Bağlayici");
-        priorityQueue.add("Elif");
-        priorityQueue.add("Şenol");
-        priorityQueue.add("Ahmet");
+        priorityQueue.add("Joe");
+        priorityQueue.add("John");
+        priorityQueue.add("Doe");
+        priorityQueue.add("Alex");
 
         for(String str:priorityQueue){
             System.out.println(str);

@@ -1,4 +1,4 @@
-package Collactions.HwLeague;
+package Collactions.HwLeage;
 
 public class Match {
     private String homeSide;

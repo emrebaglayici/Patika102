@@ -7,10 +7,10 @@ public class Main {
     public static void main(String[] args) {
         Vector<String> vector=new Vector<>();
         vector.add("Emre");
-        vector.add("Bağlayici");
-        vector.add("Elif");
+        vector.add("Baglayici");
+        vector.add("John");
 
-        vector.add(1,"Şenol");
+        vector.add(1,"Marcus");
 
         Iterator<String> iterator= vector.iterator();
         while (iterator.hasNext()){

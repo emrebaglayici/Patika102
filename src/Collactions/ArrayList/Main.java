@@ -11,7 +11,7 @@ public class Main {
         arrayList.add(null);
         arrayList.add(78);
         arrayList.add(65);
-        System.out.println( arrayList.remove(0)+" silindi");
+        System.out.println( arrayList.remove(0)+" removed");
 
         arrayList.set(2,22);
         System.out.println(arrayList.size());

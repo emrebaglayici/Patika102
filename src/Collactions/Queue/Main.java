@@ -7,9 +7,9 @@ import java.util.Queue;
 public class Main {
     public static void main(String[] args) {
         Queue<String> queue=new LinkedList<>();
-        queue.add("Emre");
-        queue.add("Bağlayici");
-        queue.add("Elif");
+        queue.add("Alex");
+        queue.add("De");
+        queue.add("Souza");
 
         System.out.println(queue.poll());
         System.out.println("--------------");

@@ -78,7 +78,7 @@ public class Game {
                     System.out.println("Please type valid location !!");
             }
             if (location == null) {
-                System.out.println("game over see you");
+                System.out.println("Game over see you");
                 break;
             }
             if (!location.onLocation()) {
