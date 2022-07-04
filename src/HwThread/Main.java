@@ -13,8 +13,6 @@ public class Main {
 
         ArrayList<Integer> arrayList=new ArrayList<>();
 
-
-
         for (int i = 1; i <=10000 ; i++) {
             arrayList.add(i);
         }
