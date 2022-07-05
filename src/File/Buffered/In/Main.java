@@ -6,7 +6,7 @@ import java.io.FileInputStream;
 public class Main {
     public static void main(String[] args) {
         try {
-            FileInputStream fileInputStream=new FileInputStream("patika.txt");
+            FileInputStream fileInputStream=new FileInputStream("file.txt");
             BufferedInputStream bufferedInputStream=new BufferedInputStream(fileInputStream);
             int i= bufferedInputStream.read();
             while (i!=-1){

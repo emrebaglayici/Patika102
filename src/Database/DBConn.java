@@ -10,9 +10,9 @@ public class DBConn {
     public static void main(String[] args) throws SQLException {
         Connection connection = null;
 //        String sql="SELECT * FROM student";
-//        String insertSql = "INSERT INTO student (student_name,student_class) VALUES('Şenol İnan',4)";
+//        String insertSql = "INSERT INTO student (student_name,student_class) VALUES('Senol',4)";
 //        String prSql = "INSERT INTO student (student_name,student_class) VALUES(?,?)";
-//        String update="UPDATE student SET student_name='Elif Sayılı' WHERE student_id=2";
+//        String update="UPDATE student SET student_name='Elif' WHERE student_id=2";
 //        String updatePr="UPDATE student SET student_name=? WHERE student_id=?";
 //        String sql="DELETE FROM student WHERE student_id=4";
 //        String prSql="DELETE FROM student WHERE student_id=?";
@@ -47,7 +47,7 @@ public class DBConn {
 //            statement.executeUpdate(update);
 //            PreparedStatement pr= connection.prepareStatement(updatePr);
 //            pr.setInt(2,1);
-//            pr.setString(1,"Neco");
+//            pr.setString(1,"Mehmet");
 //            pr.executeUpdate();
 //            PreparedStatement preparedStatement =
 //                    connection.prepareStatement(prSql);

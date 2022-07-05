@@ -1,10 +1,10 @@
 package first;
 
-public class Daire {
+public class Triangle {
     public int r;
     public final double PI=3.14;
 
-    public Daire(int r) {
+    public Triangle(int r) {
         this.r = r;
     }
     public void calculateArea(){
@@ -13,7 +13,7 @@ public class Daire {
     }
 
     public static void main(String[] args) {
-        Daire a=new Daire(10);
+        Triangle a=new Triangle(10);
         a.calculateArea();
     }
 

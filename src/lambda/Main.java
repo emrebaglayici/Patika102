@@ -2,7 +2,7 @@ package lambda;
 
 public class Main {
     public static void main(String[] args) {
-//        Math toplama=new Math() {
+//        Math sum=new Math() {
 //            @Override
 //            public int transaction(int a, int b) {
 //                return a+b;

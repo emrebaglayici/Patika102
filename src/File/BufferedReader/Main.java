@@ -5,7 +5,7 @@ import java.io.*;
 public class Main {
     public static void main(String[] args) {
 //        try {
-//            FileReader fileReader=new FileReader("patika.txt");
+//            FileReader fileReader=new FileReader("file.txt");
 //            BufferedReader bufferedReader=new BufferedReader(fileReader);
 //
 //            String line;
@@ -17,9 +17,9 @@ public class Main {
 //        } catch (Exception e) {
 //            throw new RuntimeException(e);
 //        }
-        String data="LEARNINGJAVA";
+        String data="LEARNING JAVA";
         try {
-            FileWriter fileWriter=new FileWriter("output.txt");
+            FileWriter fileWriter=new FileWriter("file.txt");
             BufferedWriter bufferedWriter=new BufferedWriter(fileWriter);
             bufferedWriter.write(data);
 

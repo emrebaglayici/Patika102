@@ -8,7 +8,7 @@ import java.nio.charset.StandardCharsets;
 public class Main {
     public static void main(String[] args) {
         try {
-            FileInputStream fileInputStream=new FileInputStream("patika.txt");
+            FileInputStream fileInputStream=new FileInputStream("file.txt");
 
 
             InputStreamReader inputStreamReader=new InputStreamReader(fileInputStream, StandardCharsets.UTF_8);

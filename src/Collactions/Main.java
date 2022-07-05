@@ -14,7 +14,6 @@ public class Main {
 //        hashSet.add(30);
 //        hashSet.add(null);
 ////        for(Integer number:hashSet){
-////            //tekrar eden verileri yazmaz
 ////            System.out.println(number);
 ////        }
 //        Iterator<Integer> iterator=hashSet.iterator();

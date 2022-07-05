@@ -6,9 +6,9 @@ import java.io.FileOutputStream;
 
 public class Main {
     public static void main(String[] args) {
-        String data = "Java 102 Patikası";
+        String data = "Java 102";
         try {
-            FileOutputStream fileOutputStream = new FileOutputStream("patika.txt");
+            FileOutputStream fileOutputStream = new FileOutputStream("file.txt");
             BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(fileOutputStream);
             byte[] byteArray = data
                     .getBytes();

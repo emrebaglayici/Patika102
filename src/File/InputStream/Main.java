@@ -5,7 +5,7 @@ import java.io.FileInputStream;
 public class Main {
     public static void main(String[] args) {
         try {
-            FileInputStream inputStream=new FileInputStream("src/File/InputStream/patika.txt");
+            FileInputStream inputStream=new FileInputStream("src/File/InputStream/file.txt");
             System.out.println("Available : "+inputStream.available());
             inputStream.skip(10);
             int i=inputStream.read();

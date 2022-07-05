@@ -12,7 +12,7 @@ public class Student {
 
     public void setAge(int age) throws IllegalArgumentException{
         if(age<0){
-            throw new IllegalArgumentException("Yaş sıfırdan küçük olamaz");
+            throw new IllegalArgumentException("Age cannot be smaller than 0");
         }
         this.age = age;
     }
@@ -37,7 +37,7 @@ public class Student {
             return new Student(123,"Emre");
         }
         else {
-            throw new StudentException("Öğrenci bulunamadı");
+            throw new StudentException("Student not found");
         }
     }
 

@@ -6,18 +6,17 @@ public class Grades<T extends Number>{
         Scanner scanner=new Scanner(System.in);
         Integer[] grades=new Integer[5];
         String[] classNames={
-                "Matematik",
-                "Kimya",
-                "Fizik",
-                "Tarih",
-                "Müzik"
+                "Math",
+                "Physics",
+                "History",
+                "Music"
         };
         for (int i = 0; i < grades.length ; i++) {
-            System.out.print((classNames[i])+" notu giriniz :");
+            System.out.print((classNames[i])+" . grade :");
             int input=scanner.nextInt();
             if(input<0 || input>100){
                 while ((input<0 || input>100)){
-                    System.out.println("Yanlış not aralığı yeniden giriniz : ");
+                    System.out.println("Type again : ");
                     input=scanner.nextInt();
                 }
             }else{
@@ -33,9 +32,9 @@ public class Grades<T extends Number>{
     }
     public static void printResult(Double avg){
         if(avg>=55){
-            System.out.println("Geçtiniz, ortalamanız : "+avg);
+            System.out.println("Pass, average : "+avg);
         }else{
-            System.out.println("Kaldınız, ortalamanız : "+avg);
+            System.out.println("Fail, average : "+avg);
         }
     }
 

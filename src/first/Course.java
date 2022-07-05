@@ -20,7 +20,7 @@ public class Course {
 
 
     public static void courseList(){
-        String[] courses={"Mat","Fizik","Kimya"};
+        String[] courses={"Math","Physics","Grammar"};
         for(String i:courses){
             System.out.println(i);
         }

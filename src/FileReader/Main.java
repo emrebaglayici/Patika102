@@ -8,7 +8,7 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) {
 //        try {
-//            FileReader input=new FileReader("patika.txt");
+//            FileReader input=new FileReader("file.txt");
 //            input.skip(2);
 //            int i= input.read();
 //            while (i!=-1){
@@ -21,7 +21,7 @@ public class Main {
 //        }
         String data="Java 102";
         try {
-            FileWriter fileWriter=new FileWriter("output.txt");
+            FileWriter fileWriter=new FileWriter("file.txt");
             fileWriter.write(data);
             fileWriter.close();
         } catch (IOException e) {

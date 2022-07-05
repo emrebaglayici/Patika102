@@ -8,7 +8,7 @@ public class Main {
         Scanner scanner=new Scanner(System.in);
         int inp;
         try {
-            System.out.println("Str  giriniz");
+            System.out.println("Type String");
             String a=scanner.nextLine();
             int number=Integer.parseInt(a);
             System.out.println(number);
@@ -20,7 +20,7 @@ public class Main {
 
         }finally {
             scanner.close();
-            System.out.println("Bu kod her türlü çalışacak");
+            System.out.println("This code always works.");
         }
     }
 }
