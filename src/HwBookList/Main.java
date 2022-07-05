@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
+        Book bookObject=new Book();
         Book book1=new Book("A",100,"Emre","1610996");
         Book book2=new Book("B",120,"Elif","1610996");
         Book book3=new Book("C",140,"Ahmet","1610996");
@@ -38,6 +39,7 @@ public class Main {
         carMap.forEach((x,y)-> System.out.println(x+" "+y));
 
         List<Book> book=bookList.stream().filter(a -> a.getPageNumber() > 100).toList();
+        bookObject.getAllBooks(book);
 
     }
 }
