@@ -1,7 +1,5 @@
 package PatikaClone.Helper;
 
-import javax.print.DocFlavor;
-
 public class Config {
     public static final String PROJECT_TITLE="Patika.Dev";
     public static final String DB_URL="jdbc:mysql://localhost:3306/patika";

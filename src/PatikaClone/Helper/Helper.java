@@ -61,5 +61,20 @@ public class Helper {
     }
     public static void optionPaneTR(){
         UIManager.put("OptionPane.okButtonText","Tamam");
+        UIManager.put("OptionPane.yesButtonText","Evet");
+        UIManager.put("OptionPane.noButtonText","Hayır");
+    }
+
+    public static boolean confirm(String str) {
+        optionPaneTR();
+        String msg;
+        switch (str){
+            case "sure":
+                msg="Are you sure ?";
+                break;
+            default:
+                msg=str;
+        }
+        return JOptionPane.showConfirmDialog(null,msg,"Last Call ?",JOptionPane.YES_NO_OPTION)==0;
     }
 }

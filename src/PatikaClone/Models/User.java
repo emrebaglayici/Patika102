@@ -138,6 +138,29 @@ public class User {
         return obj;
     }
 
+    public static User getFetch(int id){
+        User obj=null;
+        String query="SELECT * FROM user WHERE id=?";
+        try {
+            PreparedStatement preparedStatement=DbConnector.getInstance().prepareStatement(query);
+            preparedStatement.setInt(1,id);
+            ResultSet  resultSet=preparedStatement.executeQuery();
+            if(resultSet.next()){
+                obj=new User();
+                obj.setId(resultSet.getInt("id"));
+                obj.setName(resultSet.getString("name"));
+                obj.setUsername(resultSet.getString("uname"));
+                obj.setPassword(resultSet.getString("pass"));
+                obj.setType(resultSet.getString("type"));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        return obj;
+    }
+
     public static boolean delete(int id){
         String query="DELETE FROM user WHERE id= ?";
         try {
@@ -157,11 +180,15 @@ public class User {
             Helper.showMessage("This username is taken");
             return false;
         }
-        for(User obj:getList()){
-            if(!obj.getType().equals(type)){
+        for(User obj:User.getList()){
+            if(!findUser.getType().equals(type)){
                 Helper.showMessage("Type geçerli değil");
                 return false;
             }
+//            if(!obj.getType().equals(type)){
+//                Helper.showMessage("Type geçerli değil");
+//                return false;
+//            }
         }
         try {
             PreparedStatement preparedStatement=DbConnector.getInstance().prepareStatement(query);
