@@ -99,10 +99,11 @@ public class Course {
         }
         return true;
     }
-    public static boolean update(int id,int user_id,int patika_id,String course_name,String progLang){
+    public static boolean update(int id,int user_id,int patika_id,String course_name,String progLang,String patikaName,String educatorName){
 
         String query="UPDATE course SET user_id=?,patika_id=?,name=?,lang=? WHERE id=?";
         String query2="UPDATE patika SET name=? WHERE id=?";
+        String query3="UPDATE user SET name=? WHERE id=?";
 //        Course findCourse=Course.getFetch(id);
 //        if (findUser!=null && findUser.getId()!=id){
 //            Helper.showMessage("This username is taken");
@@ -118,14 +119,19 @@ public class Course {
         try {
             PreparedStatement preparedStatement=DbConnector.getInstance().prepareStatement(query);
             PreparedStatement preparedStatement2=DbConnector.getInstance().prepareStatement(query2);
+            PreparedStatement preparedStatement3=DbConnector.getInstance().prepareStatement(query3);
             preparedStatement.setInt(1,user_id);
             preparedStatement.setInt(2,patika_id);
             preparedStatement.setString(3,course_name);
             preparedStatement.setString(4,progLang);
             preparedStatement.setInt(5,id);
-            preparedStatement2.setString(1,Patika.getFetch(patika_id).getName());
+            preparedStatement2.setString(1,patikaName);
             preparedStatement2.setInt(2,patika_id);
-            return preparedStatement.executeUpdate()!=-1 && preparedStatement2.executeUpdate()!=-1;
+            preparedStatement3.setString(1,educatorName);
+            preparedStatement3.setInt(2,user_id);
+            return preparedStatement.executeUpdate()!=-1 &&
+                    preparedStatement2.executeUpdate()!=-1 &&
+                    preparedStatement3.executeUpdate()!=-1;
         } catch (SQLException e) {
             e.printStackTrace();
         }
