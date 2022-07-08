@@ -65,6 +65,41 @@ public class Course {
         return true;
     }
 
+    public static ArrayList<Course> getListByUser(int user_id) {
+        ArrayList<Course> courseList=new ArrayList<>();
+        Course obj;
+        try {
+            Statement statement= DbConnector.getInstance().createStatement();
+            ResultSet resultSet=statement.executeQuery("SELECT * FROM course WHERE user_id="+user_id);
+            while (resultSet.next()){
+                int id=resultSet.getInt("id");
+                int userID=resultSet.getInt("user_id");
+                int patika_id=resultSet.getInt("patika_id");
+                String name=resultSet.getString("name");
+                String lang=resultSet.getString("lang");
+                obj=new Course(id,user_id,patika_id,name,lang);
+                courseList.add(obj);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return courseList;
+    }
+
+    public static boolean delete(int id){
+        String query="DELETE FROM course WHERE id= ?";
+
+        try {
+            PreparedStatement preparedStatement=DbConnector.getInstance().prepareStatement(query);
+            preparedStatement.setInt(1,id);
+
+            return preparedStatement.executeUpdate()!=-1;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return true;
+    }
+
     public int getId() {
         return id;
     }

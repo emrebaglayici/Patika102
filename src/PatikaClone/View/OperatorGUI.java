@@ -118,6 +118,7 @@ public class OperatorGUI extends JFrame {
                     Helper.showMessage("error");
                 loadUserModel();
                 loadEducatorCombo();
+                loadCourseModel();
             }
         });
         patikaMenu = new JPopupMenu();
@@ -133,6 +134,7 @@ public class OperatorGUI extends JFrame {
                 public void windowClosed(WindowEvent e) {
                     loadPatikaModel();
                     loadPatikaCombo();
+                    loadCourseModel();
                 }
             });
         });
@@ -143,6 +145,7 @@ public class OperatorGUI extends JFrame {
                     Helper.showMessage("done");
                     loadPatikaModel();
                     loadPatikaCombo();
+                    loadCourseModel();
                 } else {
                     Helper.showMessage("error");
                 }
@@ -225,6 +228,8 @@ public class OperatorGUI extends JFrame {
                         Helper.showMessage("done");
                         loadUserModel();
                         loadEducatorCombo();
+                        loadCourseModel();
+                        fld_user_id.setText(null);
                     } else {
                         Helper.showMessage("error");
                     }
@@ -240,6 +245,7 @@ public class OperatorGUI extends JFrame {
         });
         btn_logout.addActionListener(e -> {
             dispose();
+            LoginGUI loginGUI=new LoginGUI();
         });
         btn_patika_add.addActionListener(e -> {
             if (Helper.isFieldEmpty(fld_patika_name))
@@ -260,6 +266,8 @@ public class OperatorGUI extends JFrame {
                 if(Course.add(userItem.getKey(),patikaItem.getKey(), fld_course_name.getText(),fld_course_lang.getText() )){
                     Helper.showMessage("done");
                     loadCourseModel();
+                    fld_course_lang.setText(null);
+                    fld_course_name.setText(null);
 
                 }else{
                     Helper.showMessage("error");

@@ -161,11 +161,46 @@ public class User {
         return obj;
     }
 
+    public static User getFetch(String uname,String pass){
+        User obj=null;
+        String query="SELECT * FROM user WHERE uname=? AND pass=?";
+        try {
+            PreparedStatement preparedStatement=DbConnector.getInstance().prepareStatement(query);
+            preparedStatement.setString(1,uname);
+            preparedStatement.setString(2,pass);
+            ResultSet  resultSet=preparedStatement.executeQuery();
+            if(resultSet.next()){
+                switch (resultSet.getString("type")){
+                    case "operator":
+                        obj=new Operator();
+                        break;
+                    default:
+                        obj=new User();
+                }
+                obj.setId(resultSet.getInt("id"));
+                obj.setName(resultSet.getString("name"));
+                obj.setUsername(resultSet.getString("uname"));
+                obj.setPassword(resultSet.getString("pass"));
+                obj.setType(resultSet.getString("type"));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        return obj;
+    }
+
     public static boolean delete(int id){
         String query="DELETE FROM user WHERE id= ?";
+        ArrayList<Course> courseList=Course.getListByUser(id);
+        for (Course c:courseList){
+            Course.delete(c.getId());
+        }
         try {
             PreparedStatement preparedStatement=DbConnector.getInstance().prepareStatement(query);
             preparedStatement.setInt(1,id);
+
             return preparedStatement.executeUpdate()!=-1;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -185,10 +220,7 @@ public class User {
                 Helper.showMessage("Type geçerli değil");
                 return false;
             }
-//            if(!obj.getType().equals(type)){
-//                Helper.showMessage("Type geçerli değil");
-//                return false;
-//            }
+
         }
         try {
             PreparedStatement preparedStatement=DbConnector.getInstance().prepareStatement(query);
