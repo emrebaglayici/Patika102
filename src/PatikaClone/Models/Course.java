@@ -1,6 +1,7 @@
 package PatikaClone.Models;
 
 import PatikaClone.Helper.DbConnector;
+import PatikaClone.Helper.Helper;
 
 import javax.swing.plaf.nimbus.State;
 import java.sql.PreparedStatement;
@@ -88,12 +89,43 @@ public class Course {
 
     public static boolean delete(int id){
         String query="DELETE FROM course WHERE id= ?";
-
         try {
             PreparedStatement preparedStatement=DbConnector.getInstance().prepareStatement(query);
             preparedStatement.setInt(1,id);
 
             return preparedStatement.executeUpdate()!=-1;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return true;
+    }
+    public static boolean update(int id,int user_id,int patika_id,String course_name,String progLang){
+
+        String query="UPDATE course SET user_id=?,patika_id=?,name=?,lang=? WHERE id=?";
+        String query2="UPDATE patika SET name=? WHERE id=?";
+//        Course findCourse=Course.getFetch(id);
+//        if (findUser!=null && findUser.getId()!=id){
+//            Helper.showMessage("This username is taken");
+//            return false;
+//        }
+//        for(Patika obj:Patika.getList()){
+//            if(!findPatika.getName().equals(patika)){
+//                Helper.showMessage("Invalid Patika Name");
+//                return false;
+//            }
+//
+//        }
+        try {
+            PreparedStatement preparedStatement=DbConnector.getInstance().prepareStatement(query);
+            PreparedStatement preparedStatement2=DbConnector.getInstance().prepareStatement(query2);
+            preparedStatement.setInt(1,user_id);
+            preparedStatement.setInt(2,patika_id);
+            preparedStatement.setString(3,course_name);
+            preparedStatement.setString(4,progLang);
+            preparedStatement.setInt(5,id);
+            preparedStatement2.setString(1,Patika.getFetch(patika_id).getName());
+            preparedStatement2.setInt(2,patika_id);
+            return preparedStatement.executeUpdate()!=-1 && preparedStatement2.executeUpdate()!=-1;
         } catch (SQLException e) {
             e.printStackTrace();
         }

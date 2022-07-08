@@ -53,6 +53,8 @@ public class OperatorGUI extends JFrame {
     private JComboBox cmb_course_patika;
     private JComboBox cmb_course_user;
     private JButton btn_course_add;
+    private JTextField fld_course_id;
+    private JButton btn_course_delete;
     private final Operator operator;
     private DefaultTableModel mdl_user_list;
     private Object[] row_user_list;
@@ -121,6 +123,8 @@ public class OperatorGUI extends JFrame {
                 loadCourseModel();
             }
         });
+
+
         patikaMenu = new JPopupMenu();
         JMenuItem updateMenu = new JMenuItem("Update");
         JMenuItem deleteMenu = new JMenuItem("Delete");
@@ -191,8 +195,45 @@ public class OperatorGUI extends JFrame {
         tbl_course_list.setModel(mdl_course_list);
         tbl_course_list.getColumnModel().getColumn(0).setMaxWidth(75);
         tbl_course_list.getTableHeader().setReorderingAllowed(false);
+
+        tbl_course_list.getSelectionModel().addListSelectionListener(e -> {
+            try {
+                String selection_course_id = tbl_course_list.getValueAt(tbl_course_list.getSelectedRow(), 0).toString();
+                fld_course_id.setText(selection_course_id);
+            } catch (Exception exception) {
+                System.out.println(exception.getMessage());
+            }
+        });
+
+
         loadPatikaCombo();
         loadEducatorCombo();
+
+        tbl_course_list.getModel().addTableModelListener(e -> {
+            if (e.getType() == TableModelEvent.UPDATE) {
+                int course_id = Integer.parseInt(tbl_course_list.getValueAt(tbl_course_list.getSelectedRow(), 0).toString());
+                String course_name = tbl_course_list.getValueAt(tbl_course_list.getSelectedRow(), 1).toString();
+                String progLang = tbl_course_list.getValueAt(tbl_course_list.getSelectedRow(), 2).toString();
+                String patikaName = tbl_course_list.getValueAt(tbl_course_list.getSelectedRow(), 3).toString();
+                String educatorName = tbl_course_list.getValueAt(tbl_course_list.getSelectedRow(), 4).toString();
+
+
+                int patika_id=Patika.getFetch(patikaName).getId();
+
+                int user_id=User.getFetchByName(educatorName).getId();
+//                User selectedUser=User.getFetch(course_id);
+//                if(!u.getType().equals(educatorName)){
+//                    Helper.showMessage("Invalid educator name");
+//                }
+                if (Course.update(course_id, user_id, patika_id,course_name,progLang)) {
+                    Helper.showMessage("done");
+                } else
+                    Helper.showMessage("error");
+                loadCourseModel();
+                loadEducatorCombo();
+                loadUserModel();
+            }
+        });
 
 
         // Course Finished
@@ -245,7 +286,7 @@ public class OperatorGUI extends JFrame {
         });
         btn_logout.addActionListener(e -> {
             dispose();
-            LoginGUI loginGUI=new LoginGUI();
+            LoginGUI loginGUI = new LoginGUI();
         });
         btn_patika_add.addActionListener(e -> {
             if (Helper.isFieldEmpty(fld_patika_name))
@@ -263,14 +304,31 @@ public class OperatorGUI extends JFrame {
             if (Helper.isFieldEmpty(fld_course_name) || Helper.isFieldEmpty(fld_course_lang)) {
                 Helper.showMessage("fill");
             } else {
-                if(Course.add(userItem.getKey(),patikaItem.getKey(), fld_course_name.getText(),fld_course_lang.getText() )){
+                if (Course.add(userItem.getKey(), patikaItem.getKey(), fld_course_name.getText(), fld_course_lang.getText())) {
                     Helper.showMessage("done");
                     loadCourseModel();
                     fld_course_lang.setText(null);
                     fld_course_name.setText(null);
 
-                }else{
+                } else {
                     Helper.showMessage("error");
+                }
+            }
+        });
+        btn_course_delete.addActionListener(e -> {
+            if (Helper.isFieldEmpty(fld_course_id)) {
+                Helper.showMessage("fill");
+            } else {
+                if (Helper.confirm("sure")) {
+                    int course_id = Integer.parseInt(fld_course_id.getText());
+                    if (Course.delete(course_id)) {
+                        Helper.showMessage("done");
+                        loadCourseModel();
+                        loadEducatorCombo();
+                        loadUserModel();
+                        fld_course_id.setText(null);
+                    } else
+                        Helper.showMessage("error");
                 }
             }
         });

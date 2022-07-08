@@ -138,6 +138,31 @@ public class User {
         return obj;
     }
 
+    public static User getFetchByName(String name){
+        User obj=null;
+        String query="SELECT * FROM user WHERE name=?";
+        try {
+            PreparedStatement preparedStatement=DbConnector.getInstance().prepareStatement(query);
+            preparedStatement.setString(1,name);
+            ResultSet resultSet=preparedStatement.executeQuery();
+            if(resultSet.next()){
+                obj=new User();
+                obj.setId(resultSet.getInt("id"));
+                obj.setName(resultSet.getString("name"));
+                obj.setUsername(resultSet.getString("uname"));
+                obj.setPassword(resultSet.getString("pass"));
+                obj.setType(resultSet.getString("type"));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        return obj;
+    }
+
+
+
     public static User getFetch(int id){
         User obj=null;
         String query="SELECT * FROM user WHERE id=?";
