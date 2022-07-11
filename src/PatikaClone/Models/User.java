@@ -2,6 +2,7 @@ package PatikaClone.Models;
 
 import PatikaClone.Helper.DbConnector;
 import PatikaClone.Helper.Helper;
+import PatikaClone.View.LoginGUI;
 
 import javax.swing.*;
 import java.sql.PreparedStatement;
@@ -217,6 +218,44 @@ public class User {
 
 
         return obj;
+    }
+
+    public static boolean signUp(String name,String username,String password){
+        if(checkUserName(username)){
+            User obj=null;
+            String query="INSERT INTO user (name,uname,pass,type) VALUES (?,?,?,?)";
+            try {
+                PreparedStatement preparedStatement=DbConnector.getInstance().prepareStatement(query);
+                preparedStatement.setString(1,name);
+                preparedStatement.setString(2,username);
+                preparedStatement.setString(3,password);
+                preparedStatement.setString(4,"student");
+                int resultSet= preparedStatement.executeUpdate();
+                Helper.showMessage("Register Successful");
+
+                LoginGUI loginGUI=new LoginGUI();
+
+                return true;
+
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }else{
+            return false;
+        }
+
+
+    }
+
+    private static boolean checkUserName(String username) {
+        ArrayList<User> userArrayList=User.getList();
+        for (User u:userArrayList){
+            if(u.getUsername().equals(username)){
+                Helper.showMessage("Please type unique username");
+                return false;
+            }
+        }
+        return true;
     }
 
     public static boolean delete(int id){
