@@ -51,6 +51,8 @@ public class Course {
         return courseList;
     }
 
+
+
     public static boolean add(int user_id,int patika_id,String name,String lang) {
         String query="INSERT INTO course (user_id,patika_id,name,lang) VALUES(?,?,?,?)";
         try{
@@ -86,6 +88,7 @@ public class Course {
         }
         return courseList;
     }
+
 
     public static boolean delete(int id){
         String query="DELETE FROM course WHERE id= ?";

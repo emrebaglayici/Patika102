@@ -3,12 +3,11 @@ package PatikaClone.View;
 import Collactions.TreeMap.Student;
 import PatikaClone.Helper.Config;
 import PatikaClone.Helper.Helper;
+import PatikaClone.Models.Educator;
 import PatikaClone.Models.Operator;
 import PatikaClone.Models.User;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class LoginGUI extends JFrame {
     private JPanel wrapper;
@@ -17,7 +16,6 @@ public class LoginGUI extends JFrame {
     private JTextField fld_user_uname;
     private JTextField fld_user_pass;
     private JButton btn_login;
-
     public LoginGUI(){
         add(wrapper);
         setSize(400,400);
@@ -39,7 +37,7 @@ public class LoginGUI extends JFrame {
                             OperatorGUI operatorGUI=new OperatorGUI((Operator) u);
                             break;
                         case "educator":
-                            EducatorGUI educatorGUI=new EducatorGUI();
+                            EducatorGUI educatorGUI=new EducatorGUI((Educator) u);
                             break;
                         case "student":
                             StudentGUI studentGUI=new StudentGUI();

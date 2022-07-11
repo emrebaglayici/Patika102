@@ -406,15 +406,15 @@ public class OperatorGUI extends JFrame {
         }
     }
 
-    public static void main(String[] args) {
-        Helper.setLayout();
-        Operator operator1 = new Operator();
-        operator1.setId(1);
-        operator1.setName("Emre Bağlayici");
-        operator1.setPassword("123456");
-        operator1.setType("Operator");
-        operator1.setUsername("emrebaglayici");
-
-        OperatorGUI operatorGUI = new OperatorGUI(operator1);
-    }
+//    public static void main(String[] args) {
+//        Helper.setLayout();
+//        Operator operator1 = new Operator();
+//        operator1.setId(1);
+//        operator1.setName("Emre Bağlayici");
+//        operator1.setPassword("123456");
+//        operator1.setType("Operator");
+//        operator1.setUsername("emrebaglayici");
+//
+//        OperatorGUI operatorGUI = new OperatorGUI(operator1);
+//    }
 }
