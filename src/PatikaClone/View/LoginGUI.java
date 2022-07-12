@@ -4,6 +4,7 @@ import PatikaClone.Helper.Config;
 import PatikaClone.Helper.Helper;
 import PatikaClone.Models.Educator;
 import PatikaClone.Models.Operator;
+import PatikaClone.Models.Student;
 import PatikaClone.Models.User;
 
 import javax.swing.*;
@@ -43,7 +44,7 @@ public class LoginGUI extends JFrame {
                             EducatorGUI educatorGUI=new EducatorGUI((Educator) u);
                             break;
                         case "student":
-                            StudentGUI studentGUI=new StudentGUI();
+                            StudentGUI studentGUI=new StudentGUI((Student) u);
                             break;
 
                     }

@@ -80,7 +80,7 @@
         </constraints>
         <properties>
           <font name="Arial Black" size="28" style="1"/>
-          <text value="Sign Up"/>
+          <text value="Student Sign Up"/>
         </properties>
       </component>
       <vspacer id="92ac5">
