@@ -7,7 +7,12 @@ import PatikaClone.Models.Educator;
 import PatikaClone.Models.User;
 
 import javax.swing.*;
+import javax.swing.event.MouseInputAdapter;
 import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
 public class EducatorGUI extends JFrame {
@@ -18,6 +23,7 @@ public class EducatorGUI extends JFrame {
     private DefaultTableModel mdl_educator_course_list;
     private Object[] row_educator_course_list;
     private User user;
+    private JPopupMenu contentMenu;
     private final Educator educator;
 
     public EducatorGUI(Educator educator){
@@ -48,6 +54,36 @@ public class EducatorGUI extends JFrame {
        tbl_educator_courses.setModel(mdl_educator_course_list);
        tbl_educator_courses.getTableHeader().setReorderingAllowed(false);
 
+
+        contentMenu=new JPopupMenu();
+        JMenuItem contentDetails=new JMenuItem("Content Details");
+        contentMenu.add(contentDetails);
+        contentDetails.addActionListener(e->{
+            String course_name= (String) tbl_educator_courses.getValueAt(tbl_educator_courses.getSelectedRow(),0);
+            if(Course.getCourseByName(course_name)!=-1){
+                int select_id=Course.getCourseByName(course_name);
+                ContentGUI contentGUI=new ContentGUI(Course.getFetchById(select_id));
+                contentGUI.addWindowListener(new WindowAdapter() {
+                    @Override
+                    public void windowClosed(WindowEvent e) {
+                        loadEducatorModel();
+                    }
+                });
+            }
+
+
+
+        });
+        tbl_educator_courses.setComponentPopupMenu(contentMenu);
+
+        tbl_educator_courses.addMouseListener(new MouseInputAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                Point point=e.getPoint();
+                int selected_row=tbl_educator_courses.rowAtPoint(point);
+                tbl_educator_courses.setRowSelectionInterval(selected_row,selected_row);
+            }
+        });
 
     }
 

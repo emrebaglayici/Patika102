@@ -17,6 +17,14 @@ public class Patika {
         this.name = name;
     }
 
+    public static boolean checkStudentAlreadyRegister(int student_id,int patika_id) {
+        for (Patika p:Patika.getEnrolledList(student_id)){
+            if(p.getId()==patika_id)
+                return true;
+        }
+        return false;
+    }
+
 
     public int getId() {
         return id;
@@ -50,6 +58,40 @@ public class Patika {
         return patikaList;
     }
 
+    public static ArrayList<Patika> getEnrolledList(int user_id){
+        ArrayList<Patika> enrolled=new ArrayList<>();
+        Patika obj;
+        try {
+            Statement statement=DbConnector.getInstance().createStatement();
+            ResultSet resultSet= statement.executeQuery("SELECT * FROM enrolled_user WHERE user_id="+user_id);
+            while (resultSet.next()){
+                obj=new Patika(resultSet.getInt("patika_id"),resultSet.getString("patika_name"));
+                enrolled.add(obj);
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return enrolled;
+    }
+
+    public static ArrayList<Patika> getEnrolledListByName(String user_name){
+        ArrayList<Patika> enrolled=new ArrayList<>();
+        Patika obj;
+        try {
+            Statement statement=DbConnector.getInstance().createStatement();
+            ResultSet resultSet= statement.executeQuery("SELECT * FROM enrolled_user WHERE user_name="+user_name);
+            while (resultSet.next()){
+                obj=new Patika(
+                        resultSet.getInt("patika_id"),
+                        resultSet.getString("patika_name"));
+                enrolled.add(obj);
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return enrolled;
+    }
+
     public static boolean add(String name) {
         String query = "INSERT INTO patika (name) VALUES(?)";
         try {
@@ -58,6 +100,23 @@ public class Patika {
             return preparedStatement.executeUpdate() != -1;
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+        return true;
+    }
+
+    public static boolean registerCourse(int user_id,
+                                         int patika_id,String patika_name,
+                                         String user_name) {
+        String query="INSERT INTO enrolled_user (user_id,patika_id,patika_name,user_name) VALUES(?,?,?,?)";
+        try{
+            PreparedStatement pr=DbConnector.getInstance().prepareStatement(query);
+            pr.setInt(1,user_id);
+            pr.setInt(2,patika_id);
+            pr.setString(3,patika_name);
+            pr.setString(4,user_name);
+            return pr.executeUpdate()!=-1;
+        }catch (SQLException e){
+            e.printStackTrace();;
         }
         return true;
     }
@@ -90,6 +149,10 @@ public class Patika {
         }
         return obj;
     }
+
+
+
+
 
     public static Patika getFetch(String name) {
         Patika obj = null;

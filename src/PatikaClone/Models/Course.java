@@ -51,6 +51,15 @@ public class Course {
         return courseList;
     }
 
+    public static int getCourseByName(String course_name){
+        ArrayList<Course> courses=Course.getList();
+        for (Course c:courses){
+            if (c.getName().equals(course_name))
+                return c.getId();
+        }
+        return -1;
+    }
+
 
 
     public static boolean add(int user_id,int patika_id,String name,String lang) {
@@ -88,6 +97,27 @@ public class Course {
         }
         return courseList;
     }
+
+    public static Course getFetchById(int patika_id) {
+        Course obj = null;
+        String query = "SELECT * FROM course WHERE patika_id=?";
+        try {
+            PreparedStatement preparedStatement = DbConnector.getInstance().prepareStatement(query);
+            preparedStatement.setInt(1, patika_id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                obj = new Course(resultSet.getInt("id"),
+                        resultSet.getInt("user_id"),
+                        resultSet.getInt("patika_id"),
+                        resultSet.getString("name"),
+                        resultSet.getString("lang"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return obj;
+    }
+
 
 
     public static boolean delete(int id){
