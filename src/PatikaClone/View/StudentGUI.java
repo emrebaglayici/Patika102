@@ -1,7 +1,10 @@
 package PatikaClone.View;
 
 import PatikaClone.Helper.Config;
+import PatikaClone.Helper.DbConnector;
 import PatikaClone.Helper.Helper;
+import PatikaClone.Models.Content;
+import PatikaClone.Models.Course;
 import PatikaClone.Models.Patika;
 import PatikaClone.Models.Student;
 
@@ -9,7 +12,10 @@ import javax.swing.*;
 import javax.swing.event.MouseInputAdapter;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class StudentGUI extends JFrame {
@@ -19,6 +25,9 @@ public class StudentGUI extends JFrame {
     private JTable tbl_patika_list;
     private JLabel lbl_welcome;
     private JTable tbl_enrolled_list;
+    private JTextField fld_patika_id;
+    private JButton btn_details;
+    private JLabel lbl_patika_id;
     private DefaultTableModel mdl_enrolled_patika_list;
 
     private DefaultTableModel mdl_patika_list;
@@ -60,65 +69,112 @@ public class StudentGUI extends JFrame {
         tbl_patika_list.getTableHeader().setReorderingAllowed(false);
         //End//
 
-
+        tbl_enrolled_list.getSelectionModel().addListSelectionListener(e -> {
+            try {
+                String select_patika_id = tbl_enrolled_list.getValueAt(
+                        tbl_enrolled_list.getSelectedRow(), 0
+                ).toString();
+                fld_patika_id.setText(select_patika_id);
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
+            }
+        });
 
         //Start
-        enrollMenu=new JPopupMenu();
-        JMenuItem addMenu=new JMenuItem("Add");
+        enrollMenu = new JPopupMenu();
+        JMenuItem addMenu = new JMenuItem("Add");
         enrollMenu.add(addMenu);
-        addMenu.addActionListener(e->{
-            int select_id=
-                    Integer.parseInt(tbl_patika_list.getValueAt(tbl_patika_list.getSelectedRow(),0).toString());
-            if(!Patika.checkStudentAlreadyRegister(student.getId(),select_id)){
-                if(Patika.registerCourse(student.getId(),
-                        select_id,Patika.getFetch(select_id).getName(),student.getName())){
+        addMenu.addActionListener(e -> {
+            int select_id =
+                    Integer.parseInt(tbl_patika_list.getValueAt(tbl_patika_list.getSelectedRow(), 0).toString());
+            if (!Patika.checkStudentAlreadyRegister(student.getId(), select_id)) {
+                if (Patika.registerCourse(student.getId(),
+                        select_id, Patika.getFetch(select_id).getName(), student.getName())) {
 
                     Helper.showMessage("done");
                     loadRefreshEnrolledPatikaModel(student.getId());
-                }else{
+                } else {
                     Helper.showMessage("error");
                 }
-            }else{
+            } else {
                 Helper.showMessage("You already register this patika.");
             }
 
         });
 
-        mdl_enrolled_patika_list=new DefaultTableModel();
-        Object[] col_enrolled_list={
-                "ID","Patika Name"
+        mdl_enrolled_patika_list = new DefaultTableModel();
+        Object[] col_enrolled_list = {
+                "ID", "Patika Name"
         };
         mdl_enrolled_patika_list.setColumnIdentifiers(col_enrolled_list);
-        row_enrolled_list=new Object[col_enrolled_list.length];
+        row_enrolled_list = new Object[col_enrolled_list.length];
         loadStudentEnrolledPatikaModel(student.getId());
         tbl_enrolled_list.setModel(mdl_enrolled_patika_list);
         tbl_patika_list.setComponentPopupMenu(enrollMenu);
         tbl_enrolled_list.getTableHeader().setReorderingAllowed(false);
 
 
-
         tbl_patika_list.addMouseListener(new MouseInputAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                Point point=e.getPoint();
-                int selected_row=tbl_patika_list.rowAtPoint(point);
-                tbl_patika_list.setRowSelectionInterval(selected_row,selected_row);
+                Point point = e.getPoint();
+                int selected_row = tbl_patika_list.rowAtPoint(point);
+                tbl_patika_list.setRowSelectionInterval(selected_row, selected_row);
             }
         });
 
 
+        btn_details.addActionListener(e -> {
+            if (Helper.isFieldEmpty(fld_patika_id)) {
+                Helper.showMessage("Select a patika");
+            } else {
+                int enrolled_patika_id= Integer.parseInt(fld_patika_id.getText());
+                Course course=Course.getFetchById(enrolled_patika_id);
+                Integer course_id=course.getId();
+//                Content content=Content.getFetchByCourseId(course_id);
+                Course related_course=Content.getFetchByCourseId(course_id).getCourse();
+                if(course_id!=null && related_course!=null){
+                    ContentStudentGUI contentStudentGUI=new ContentStudentGUI(
+                            related_course
+                    );
+                    contentStudentGUI.addWindowListener(new WindowAdapter() {
+                        @Override
+                        public void windowClosed(WindowEvent e) {
+                            loadPatikaModel();
+                        }
+                    });
+                } else{
+                    Helper.showMessage("Bu kursa ait bir içerik yoktur");
+                }
+
+
+            }
+        });
+    }
+
+    private Student getFetchByPatikaId(int enrolled_patika_id) {
+        Student obj = null;
+        String query="SELECT * FROM enrolled_user WHERE patika_id=?";
+        try{
+            PreparedStatement pr= DbConnector.getInstance().prepareStatement(query);
+            pr.setInt(1,enrolled_patika_id);
+            ResultSet resultSet=pr.executeQuery();
+        }catch (SQLException sqlException){
+            sqlException.printStackTrace();
+        }
+        return obj;
 
     }
 
     private void loadRefreshEnrolledPatikaModel(int id) {
         DefaultTableModel clearModel = (DefaultTableModel) tbl_enrolled_list.getModel();
         clearModel.setRowCount(0);
-        ArrayList<Patika> enrolled_list=Patika.getEnrolledList(id);
+        ArrayList<Patika> enrolled_list = Patika.getEnrolledList(id);
         int i;
-        for (Patika obj:enrolled_list){
-            i=0;
-            row_enrolled_list[i++]=obj.getId();
-            row_enrolled_list[i++]=obj.getName();
+        for (Patika obj : enrolled_list) {
+            i = 0;
+            row_enrolled_list[i++] = obj.getId();
+            row_enrolled_list[i++] = obj.getName();
             mdl_enrolled_patika_list.addRow(row_enrolled_list);
         }
     }
