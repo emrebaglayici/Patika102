@@ -164,6 +164,47 @@ public class Content {
         return contents;
     }
 
+    public static boolean addQuiz(int content_id, String question) {
+        String query="INSERT INTO quiz (content_id,question) VALUES(?,?)";
+        Quiz findQuestion=Quiz.getFetch(question);
+        if(findQuestion!=null){
+            Helper.showMessage("This question was added before.");
+            return false;
+        }
+        try {
+            PreparedStatement pr=DbConnector.getInstance().prepareStatement(query);
+            pr.setInt(1,content_id);
+            pr.setString(2,question);
+            return pr.executeUpdate()!=-1;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return true;
+
+    }
+
+    public static Content getFetch(int contentId) {
+        Content obj=null;
+        String query="SELECT * FROM content WHERE id=?";
+        try {
+            PreparedStatement pr=DbConnector.getInstance().prepareStatement(query);
+            pr.setInt(1,contentId);
+            ResultSet resultSet=pr.executeQuery();
+            if(resultSet.next()){
+                obj=new Content(resultSet.getInt("id"),
+                        resultSet.getInt("course_id"),
+                        resultSet.getString("title"),
+                        resultSet.getString("description"),
+                        resultSet.getString("link"));
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return obj;
+    }
+
+
+
     public int getId() {
         return id;
     }

@@ -4,9 +4,14 @@ import PatikaClone.Helper.Config;
 import PatikaClone.Helper.Helper;
 import PatikaClone.Models.Content;
 import PatikaClone.Models.Course;
+import PatikaClone.Models.Quiz;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
 public class ContentGUI extends JFrame{
@@ -27,7 +32,9 @@ public class ContentGUI extends JFrame{
     private JButton btn_content_sh;
     private JTable tbl_content_list;
     private JScrollPane scrl_content_list;
-    private JTextField textField1;
+    private JTextField fld_question;
+    private JButton addQuestionButton;
+    private JButton fld_see_questions;
     private DefaultTableModel mdl_content_list;
     private Object[] row_content_list;
     private final Course course;
@@ -112,6 +119,34 @@ public class ContentGUI extends JFrame{
             String query=Content.searchQuery(content_desc,content_title);
             loadContentModel(Content.searchContentList(query));
 
+        });
+        addQuestionButton.addActionListener(e -> {
+            if (Helper.isFieldEmpty(fld_question)|| Helper.isFieldEmpty(fld_content_id)){
+                Helper.showMessage("fill");
+            }else{
+                int content_id=Integer.parseInt(fld_content_id.getText());
+                String question=fld_question.getText();
+                if(Content.addQuiz(content_id,question)){
+                    Helper.showMessage("done");
+                    fld_question.setText(null);
+                }
+            }
+        });
+        fld_see_questions.addActionListener(e -> {
+            if (Helper.isFieldEmpty(fld_content_id)){
+                Helper.showMessage("Select a content !");
+            }else{
+                int select_id=Integer.parseInt(fld_content_id.getText());
+                QuizQuestionGUI quizQuestionGUI=new QuizQuestionGUI(
+                        Quiz.getFetch(select_id)
+                );
+                quizQuestionGUI.addWindowListener(new WindowAdapter() {
+                    @Override
+                    public void windowClosed(WindowEvent e) {
+                        loadContentModel();
+                    }
+                });
+            }
         });
     }
 
