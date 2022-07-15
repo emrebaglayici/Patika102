@@ -223,30 +223,6 @@ public class Content {
         return obj;
     }
 
-    public static ArrayList<Content> getFetchByStudentId(int student_id) {
-        Content obj=null;
-        ArrayList<Content> student_contents=new ArrayList<>();
-        String query="SELECT * FROM content WHERE id=?";
-        try {
-            PreparedStatement pr=DbConnector.getInstance().prepareStatement(query);
-            pr.setInt(1,student_id);
-            ResultSet resultSet=pr.executeQuery();
-            if (resultSet.next()){
-                int id= resultSet.getInt("id");
-                int course_id=resultSet.getInt("course_id");
-                String title=resultSet.getString("title");
-                String desc=resultSet.getString("description");
-                String link=resultSet.getString("link");
-                obj=new Content(id,course_id,title,desc,link);
-                student_contents.add(obj);
-            }
-        }catch (SQLException sqlException){
-            sqlException.printStackTrace();
-        }
-        return student_contents;
-    }
-
-
     public int getId() {
         return id;
     }

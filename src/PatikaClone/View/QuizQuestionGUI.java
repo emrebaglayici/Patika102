@@ -15,7 +15,6 @@ public class QuizQuestionGUI extends JFrame {
     private JLabel lbl_content_title;
     private DefaultTableModel mdl_quiz_list;
     private Object[] row_quiz_list;
-//    private final Content content;
     private final Quiz quiz;
     public QuizQuestionGUI(Quiz quiz){
         this.quiz=quiz;

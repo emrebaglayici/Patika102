@@ -222,10 +222,6 @@ public class OperatorGUI extends JFrame {
                 System.out.println(patika_id);
                 int user_id=User.getFetchByName(educatorName).getId();
                 System.out.println(user_id);
-//                User selectedUser=User.getFetch(course_id);
-//                if(!u.getType().equals(educatorName)){
-//                    Helper.showMessage("Invalid educator name");
-//                }
                 if (Course.update(course_id, user_id, patika_id,course_name,progLang,patikaName,educatorName)) {
                     Helper.showMessage("done");
                 } else
@@ -405,16 +401,4 @@ public class OperatorGUI extends JFrame {
             cmb_course_patika.addItem(new Item(patika.getId(), patika.getName()));
         }
     }
-
-//    public static void main(String[] args) {
-//        Helper.setLayout();
-//        Operator operator1 = new Operator();
-//        operator1.setId(1);
-//        operator1.setName("Emre Bağlayici");
-//        operator1.setPassword("123456");
-//        operator1.setType("Operator");
-//        operator1.setUsername("emrebaglayici");
-//
-//        OperatorGUI operatorGUI = new OperatorGUI(operator1);
-//    }
 }

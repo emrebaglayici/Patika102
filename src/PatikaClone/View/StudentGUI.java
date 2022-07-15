@@ -131,7 +131,6 @@ public class StudentGUI extends JFrame {
                 int enrolled_patika_id= Integer.parseInt(fld_patika_id.getText());
                 Course course=Course.getFetchById(enrolled_patika_id);
                 Integer course_id=course.getId();
-//                Content content=Content.getFetchByCourseId(course_id);
                 Course related_course=Content.getFetchByCourseId(course_id).getCourse();
                 if(course_id!=null && related_course!=null){
                     ContentStudentGUI contentStudentGUI=new ContentStudentGUI(
@@ -150,20 +149,6 @@ public class StudentGUI extends JFrame {
 
             }
         });
-    }
-
-    private Student getFetchByPatikaId(int enrolled_patika_id) {
-        Student obj = null;
-        String query="SELECT * FROM enrolled_user WHERE patika_id=?";
-        try{
-            PreparedStatement pr= DbConnector.getInstance().prepareStatement(query);
-            pr.setInt(1,enrolled_patika_id);
-            ResultSet resultSet=pr.executeQuery();
-        }catch (SQLException sqlException){
-            sqlException.printStackTrace();
-        }
-        return obj;
-
     }
 
     private void loadRefreshEnrolledPatikaModel(int id) {

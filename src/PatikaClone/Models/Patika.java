@@ -73,25 +73,6 @@ public class Patika {
         }
         return enrolled;
     }
-
-    public static ArrayList<Patika> getEnrolledListByName(String user_name){
-        ArrayList<Patika> enrolled=new ArrayList<>();
-        Patika obj;
-        try {
-            Statement statement=DbConnector.getInstance().createStatement();
-            ResultSet resultSet= statement.executeQuery("SELECT * FROM enrolled_user WHERE user_name="+user_name);
-            while (resultSet.next()){
-                obj=new Patika(
-                        resultSet.getInt("patika_id"),
-                        resultSet.getString("patika_name"));
-                enrolled.add(obj);
-            }
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
-        return enrolled;
-    }
-
     public static boolean add(String name) {
         String query = "INSERT INTO patika (name) VALUES(?)";
         try {

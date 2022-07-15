@@ -3,18 +3,23 @@ package PatikaClone.View;
 import PatikaClone.Helper.Config;
 import PatikaClone.Helper.Helper;
 import PatikaClone.Models.Content;
+import PatikaClone.Models.ContentReview;
 import PatikaClone.Models.Course;
-import PatikaClone.Models.Student;
+import PatikaClone.Models.Quiz;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.util.ArrayList;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class ContentStudentGUI extends JFrame {
 
     private JPanel wrapper;
     private JTable tbl_sudent_content;
     private JLabel lbl_course_title;
+    private JButton btn_see_quiz;
+    private JButton btn_comment_submit;
+    private JTextField fld_comment;
 
     private final Course course;
     private DefaultTableModel mdl_content_student_list;
@@ -32,7 +37,7 @@ public class ContentStudentGUI extends JFrame {
         setTitle(Config.PROJECT_TITLE);
         setResizable(false);
         setVisible(true);
-        lbl_course_title.setText(" content");
+        lbl_course_title.setText(course.getName()+" content");
         mdl_content_student_list=new DefaultTableModel(){
             @Override
             public boolean isCellEditable(int row,int column){
@@ -51,6 +56,38 @@ public class ContentStudentGUI extends JFrame {
 
         tbl_sudent_content.setModel(mdl_content_student_list);
         tbl_sudent_content.getTableHeader().setReorderingAllowed(false);
+
+
+
+        btn_see_quiz.addActionListener(e -> {
+            int selected_id=
+                    Integer.parseInt(tbl_sudent_content.getValueAt(
+                            tbl_sudent_content.getSelectedRow(),0
+                    ).toString());
+            QuizQuestionStudentGUI quizQuestionStudentGUI
+                    =new QuizQuestionStudentGUI(Quiz.getFetch(selected_id));
+            quizQuestionStudentGUI.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    loadStudentContentModel();
+                }
+            });
+        });
+        btn_comment_submit.addActionListener(e -> {
+            if(Helper.isFieldEmpty(fld_comment)){
+                Helper.showMessage("fill");
+            }else{
+                int content_id=Integer.parseInt(tbl_sudent_content.getValueAt(
+                        tbl_sudent_content.getSelectedRow(),0
+                ).toString());
+                String comment=fld_comment.getText();
+                if(ContentReview.add(content_id,comment)){
+                    Helper.showMessage("done");
+                    loadStudentContentModel();
+                    fld_comment.setText(null);
+                }
+            }
+        });
     }
 
     private void loadStudentContentModel() {

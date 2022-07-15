@@ -5,9 +5,6 @@ import PatikaClone.Helper.Helper;
 import PatikaClone.Models.User;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 public class SignUpGUI extends JFrame {
     private JTextField fld_name;
@@ -32,13 +29,6 @@ public class SignUpGUI extends JFrame {
             Helper.isFieldEmpty(fld_uname)||Helper.isFieldEmpty(fld_pass)){
                 Helper.showMessage("fill");
             }else{
-//                ArrayList<User> userList=User.getList();
-//                for (User u:userList){
-//                    if(u.getUsername().equals(fld_uname.getText())){
-//                        Helper.showMessage("Please type another username");
-//                    }
-//                }
-//                User user=User.getFetch()
                 User.signUp(fld_name.getText(),fld_uname.getText(),
                         fld_pass.getText());
                 dispose();

@@ -109,6 +109,26 @@ public class Quiz {
         }
         return obj;
     }
+    public static Quiz getFetchById(int id) {
+        Quiz obj=null;
+        String sql="SELECT * FROM quiz WHERE id=?";
+        try {
+            PreparedStatement pr=DbConnector.getInstance().prepareStatement(sql);
+            pr.setInt(1,id);
+            ResultSet resultSet=pr.executeQuery();
+            if (resultSet.next()){
+                obj=new Quiz(
+                        resultSet.getInt("id"),
+                        resultSet.getInt("content_id"),
+                        resultSet.getString("question")
+                );
+            }
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return obj;
+    }
 
     public int getId() {
         return id;

@@ -118,6 +118,26 @@ public class Course {
         return obj;
     }
 
+    public static Course getFetchByCourseId(int id) {
+        Course obj = null;
+        String query = "SELECT * FROM course WHERE id=?";
+        try {
+            PreparedStatement preparedStatement = DbConnector.getInstance().prepareStatement(query);
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                obj = new Course(resultSet.getInt("id"),
+                        resultSet.getInt("user_id"),
+                        resultSet.getInt("patika_id"),
+                        resultSet.getString("name"),
+                        resultSet.getString("lang"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return obj;
+    }
+
 
 
     public static boolean delete(int id){
@@ -137,18 +157,6 @@ public class Course {
         String query="UPDATE course SET user_id=?,patika_id=?,name=?,lang=? WHERE id=?";
         String query2="UPDATE patika SET name=? WHERE id=?";
         String query3="UPDATE user SET name=? WHERE id=?";
-//        Course findCourse=Course.getFetch(id);
-//        if (findUser!=null && findUser.getId()!=id){
-//            Helper.showMessage("This username is taken");
-//            return false;
-//        }
-//        for(Patika obj:Patika.getList()){
-//            if(!findPatika.getName().equals(patika)){
-//                Helper.showMessage("Invalid Patika Name");
-//                return false;
-//            }
-//
-//        }
         try {
             PreparedStatement preparedStatement=DbConnector.getInstance().prepareStatement(query);
             PreparedStatement preparedStatement2=DbConnector.getInstance().prepareStatement(query2);
