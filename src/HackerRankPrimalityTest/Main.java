@@ -26,7 +26,9 @@ public class Main {
 //        bufferedReader.close();
 //        System.out.println(isPrime(88));
 
-        primeTill(700);
+//        primeTill(700);
+//        System.out.println(isPrime(3)?"true":"false");
+        System.out.println((11/2));
 
 
     }
@@ -43,11 +45,15 @@ public class Main {
         }
     }
     public static boolean isPrime(Integer number){
-        int counter=0;
-        for (int i = 2; i <= number; i++) {
-            if (number%i==0)
-                counter++;
+        if (number<=1){
+            return false;
+        }else{
+            for (int i = 2; i <=number/2 ; i++) {
+                if ((number%i)==0){
+                    return  false;
+                }
+            }
+            return true;
         }
-        return counter == 0;
     }
 }
