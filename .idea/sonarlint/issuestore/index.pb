@@ -1,0 +1,23 @@
+
+T
+$src/PatikaClone/Models/Educator.java,0\4\04d824d2857fccac2cbe860282fd74811dab8a8f
+Y
+)src/PatikaClone/Models/ContentReview.java,3\a\3a9397a36f8aeec7437c861081b6de6e461ee1bb
+T
+$src/PatikaClone/View/ContentGUI.java,2\d\2d10697d5520f36996cb4057868e83d8139416f3
+S
+#src/PatikaClone/Models/Content.java,5\c\5ccb528c4b8427b83f87bf827492c23131517c06
+R
+"src/PatikaClone/Helper/Config.java,b\f\bf34a611d60df8b6e9622fc26bccbc6d44ab093d
+P
+ src/PatikaClone/Helper/Item.java,1\c\1c1bb6798e5869bf91c5943b6910c15653dda5de
+W
+'src/PatikaClone/Helper/DbConnector.java,2\b\2b9b00ce290fb409d0c49217fcaba388a1d20e51
+R
+"src/PatikaClone/Helper/Helper.java,c\e\ce073a07e36b95727de9ee51d11626421bc0cbf7
+U
+%src/HackerRankCovariant/Solution.java,0\4\04d2c76734dee0d2a72d5306e8189fceb6c19245
+S
+#src/HackerRankDequeue/Solution.java,7\3\73af33820ece563b56bddf9c44370975ab8e3825
+Q
+!src/HackerRankDequeue/Deneme.java,c\9\c9103ff0888f41a1ddbf3118a87a292b9ba5ba80

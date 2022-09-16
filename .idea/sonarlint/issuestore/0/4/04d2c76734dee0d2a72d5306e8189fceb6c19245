@@ -1,0 +1,10 @@
+
+f
+java:S13016"KReplace this "switch" statement by "if" statements to increase readability.(Ô´ØÕýÿÿÿÿ
+Z
+java:S2259>"DA "NullPointerException" could be thrown; "region" is nullable here.(þ ½¦
+O
+java:S3400
+"9Remove this method and declare a constant for this value.(í¶ÉŸ
+<	java:S1316""Add a default case to this switch.(Ô´ØÕýÿÿÿÿ
+S	java:S106?"9Replace this use of System.out or System.err by a logger.(ÌŠÛ˜þÿÿÿÿ

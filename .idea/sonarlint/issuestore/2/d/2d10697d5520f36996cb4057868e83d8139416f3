@@ -1,0 +1,56 @@
+
+f	java:S117>"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Óì°à
+f	java:S117J"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õáÛŞ
+k	java:S117V"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(•Ïæ‹úÿÿÿÿ
+k	java:S117i"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰÷¨Óıÿÿÿÿ
+f	java:S117u"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‡•ÒĞ
+e	java:S117v"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(û£İn
+k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰÷¨Óıÿÿÿÿ
+l	java:S117‹"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(µ¢Ëüÿÿÿÿ
+p	java:S116"[Rename this field "lbl_content_name" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ô–šÄ
+q	java:S116"\Rename this field "fld_content_title" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‘éÿ”
+u	java:S116"[Rename this field "fld_content_desc" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ñ²–àşÿÿÿÿ
+p	java:S116"[Rename this field "fld_content_link" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(—íÚŸ
+i	java:S116"TRename this field "lbl_title" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(œí—¶
+h	java:S116"SRename this field "lbl_desc" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ã±Çá
+h	java:S116"SRename this field "lbl_link" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ø²û“
+m	java:S116"SRename this field "pnl_left" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¢²Ÿ­ıÿÿÿÿ
+o	java:S116"ZRename this field "btn_content_add" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ï¢ü®
+n	java:S116"YRename this field "fld_content_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ù¯ÌÚ
+w	java:S116"]Rename this field "btn_content_delete" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(µé¡Àşÿÿÿÿ
+s	java:S116"^Rename this field "fld_sh_content_desc" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ì‹‰€
+t	java:S116"_Rename this field "fld_sh_content_title" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(åÓ›‚
+s	java:S116 "YRename this field "btn_content_sh" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ôé‚Ìüÿÿÿÿ
+p	java:S116!"[Rename this field "tbl_content_list" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÛëøÈ
+q	java:S116""\Rename this field "scrl_content_list" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÏØ¸‚
+q	java:S116#"WRename this field "fld_question" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(à¸œ»şÿÿÿÿ
+v	java:S116%"\Rename this field "fld_see_questions" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Š´æ–ıÿÿÿÿ
+u	java:S116&"[Rename this field "mdl_content_list" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğ©‹Ëùÿÿÿÿ
+p	java:S116'"[Rename this field "row_content_list" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(†ñâß
+H
+java:S1948'"2Make "row_content_list" transient or serializable.(†ñâß
+>
+java:S1948("(Make "course" transient or serializable.(ïİ†ç
+m
+java:S3776*"RRefactor this method to reduce its Cognitive Complexity from 32 to the 15 allowed.(†˜éôùÿÿÿÿ
+b
+java:S32520"LUse static access with "javax.swing.WindowConstants" for "DISPOSE_ON_CLOSE".(Òœ Ğ
+N	java:S106M"9Replace this use of System.out or System.err by a logger.(ñ·¤¬
+Q
+java:S1854¢"5Remove this useless assignment to local variable "i".(¯Ë‰¦ıÿÿÿÿ
+Q
+java:S1854¯"5Remove this useless assignment to local variable "i".(¯Ë‰¦ıÿÿÿÿ
+M
+java:S1128"7Remove this unused import 'java.awt.event.ActionEvent'.(Úù“‘
+P
+java:S1128":Remove this unused import 'java.awt.event.ActionListener'.(Ìä¹
+C
+java:S1068"-Remove this unused "lbl_title" private field.(œí—¶
+B
+java:S1068",Remove this unused "lbl_desc" private field.(ã±Çá
+B
+java:S1068",Remove this unused "lbl_link" private field.(Ø²û“
+G
+java:S1068",Remove this unused "pnl_left" private field.(¢²Ÿ­ıÿÿÿÿ
+K
+java:S1068""5Remove this unused "scrl_content_list" private field.(ÏØ¸‚

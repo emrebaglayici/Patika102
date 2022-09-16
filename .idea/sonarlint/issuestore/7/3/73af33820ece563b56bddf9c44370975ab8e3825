@@ -1,0 +1,11 @@
+
+J
+java:S3740
+"/Provide the parametrized type for this generic.(­¿Ššÿÿÿÿÿ
+J
+java:S10661"/Merge this if statement with the enclosing one.(ç±ü—øÿÿÿÿ
+I
+java:S1481".Remove this unused "tempCount" local variable.(ä¬Õ®üÿÿÿÿ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(Í±¹­
+S	java:S106%"9Replace this use of System.out or System.err by a logger.(ğ…¡úÿÿÿÿ
+S	java:S106)"9Replace this use of System.out or System.err by a logger.(Ü÷âüÿÿÿÿ

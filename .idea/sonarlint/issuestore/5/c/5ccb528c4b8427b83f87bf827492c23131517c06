@@ -1,0 +1,50 @@
+
+`	java:S1124"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+`	java:S112b"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+a	java:S112†"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+a	java:S112¢"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+e
+java:S1192,"JDefine a constant instead of duplicating this literal "course_id" 6 times.(‡¹¤áúÿÿÿÿ
+g
+java:S1192."LDefine a constant instead of duplicating this literal "description" 6 times.(â€ğÙûÿÿÿÿ
+a
+java:S1192-"FDefine a constant instead of duplicating this literal "title" 6 times.(¡ŞÃûÿÿÿÿ
+‹
+java:S1319""pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(—©î»ûÿÿÿÿ
+‡
+java:S1319’"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(ó¤ı¼
+e	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(é·Ñw
+k	java:S117,"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‡¹¤áúÿÿÿÿ
+f	java:S1179"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(îÑĞß
+k	java:S117t"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£š”øÿÿÿÿ
+l	java:S117‹"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(©»¢¹ıÿÿÿÿ
+l	java:S117‹"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(©»¢¹ıÿÿÿÿ
+l	java:S117§"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(·¤„áüÿÿÿÿ
+l	java:S117Î"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(« ™¤øÿÿÿÿ
+l	java:S117î"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(—æÄ˜øÿÿÿÿ
+b
+java:S2095x"GUse try-with-resources or close this "Statement" in a "finally" clause.(Ø¡ëÃıÿÿÿÿ
+b
+java:S2095'"GUse try-with-resources or close this "Statement" in a "finally" clause.(Ø¡ëÃıÿÿÿÿ
+c
+java:S2095–"GUse try-with-resources or close this "Statement" in a "finally" clause.(Ø¡ëÃıÿÿÿÿ
+e
+java:S2095j"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(–õÂˆ
+j
+java:S2095U"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(â”½›ùÿÿÿÿ
+k
+java:S2095¯"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(â”½›ùÿÿÿÿ
+j
+java:S2095A"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(â”½›ùÿÿÿÿ
+k
+java:S2095¾"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(â”½›ùÿÿÿÿ
+k
+java:S2095Ò"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(â”½›ùÿÿÿÿ
+n	java:S116"TRename this field "course_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯Äªüøÿÿÿÿ
+M
+java:S1854*"7Remove this useless assignment to local variable "obj".(Ê¬×¥
+S	java:S106L"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ
+d	java:S100ê"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÎŸªš
+i	java:S100î"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(—æÄ˜øÿÿÿÿ
+Q
+java:S1144t"6Remove this unused private "getListByCourseId" method.(£š”øÿÿÿÿ
