@@ -1,0 +1,13 @@
+
+1
+java:S1643"Use a StringBuilder instead.(ñëÂ(
+2
+java:S1643"Use a StringBuilder instead.(×œÒÉ
+W
+java:S1854"ARemove this useless assignment to local variable "strPalindrome".(­ù“Ð
+H
+java:S1481"2Remove this unused "strPalindrome" local variable.(­ù“Ð
+S	java:S106"9Replace this use of System.out or System.err by a logger.(¢‹§äÿÿÿÿÿ
+V	java:S125"<This block of commented-out lines of code should be removed.(øë—”øÿÿÿÿ
+H
+java:S1144"2Remove this unused private "palindromeStr" method.(Ý‹Ÿ

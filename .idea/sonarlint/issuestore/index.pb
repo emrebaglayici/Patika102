@@ -21,3 +21,13 @@ S
 #src/HackerRankDequeue/Solution.java,7\3\73af33820ece563b56bddf9c44370975ab8e3825
 Q
 !src/HackerRankDequeue/Deneme.java,c\9\c9103ff0888f41a1ddbf3118a87a292b9ba5ba80
+w
+G.idea/sonarlint/issuestore/0/4/04d824d2857fccac2cbe860282fd74811dab8a8f,1\c\1c15148a5b674a22a3e7f0253cdd75dc50ac8183
+w
+G.idea/sonarlint/issuestore/1/c/1c1bb6798e5869bf91c5943b6910c15653dda5de,5\5\557ddfd122ef9e2cb1720470520868cd043c36fd
+F
+src/Examples/Main.java,6\e\6eb2b8ed2d53cf0fc0607a757fd309d4bbeadce2
+^
+.src/HackerRankBreakingTheRecords/Solution.java,a\7\a7dc6dd20d64321d5bbe482e467359574a5c8b6b
+R
+"src/CoensioAssigment/Solution.java,5\3\5392a7316725414662abba266f92cf07437a5e9a
