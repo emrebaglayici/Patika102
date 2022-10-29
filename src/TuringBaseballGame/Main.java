@@ -2,10 +2,10 @@ package TuringBaseballGame;
 
 import java.util.Scanner;
 import java.util.Stack;
+import java.util.stream.Collectors;
 
 class Solution{
     public static int callPoints(String[] ops){
-        int result=0;
         Stack<Integer> records=new Stack<>();
         for (String op : ops) {
             switch (op) {
@@ -21,11 +21,7 @@ class Solution{
                 default -> records.push(Integer.parseInt(op));
             }
         }
-
-        for (Integer record : records) {
-            result += record;
-        }
-        return result;
+        return records.stream().mapToInt(Integer::intValue).sum();
     }
 }
 public class Main {

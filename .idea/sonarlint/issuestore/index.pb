@@ -39,9 +39,5 @@ J
 src/PatikaDeneme/Main.java,1\c\1c07408d684cd05faaedc8d5f3266a1ffae5ec30
 G
 src/Transpose/Main.java,0\d\0db766ee1feb46d90fec3e7cdc04ff741ace84e7
-\
-,src/HackerRankSubarrayDivision/Solution.java,3\6\36d7ca6ee660bb2f06e5029e5097897de836dab6
 S
 #src/DivisibleSumPairs/Solution.java,7\5\75f45d5a98920dc9c8ea5d56ebe1179966afdefe
-L
-java.io.PrintStream@7ba4f24f,2\b\2b85ee696658c79c359884cefaa090e066b3c8b9
